@@ -12,21 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('basepth');
+    return view('access-login');
+})->name('basepath');
 
-/*Route::get('/css',function(){
-	return "http://127.0.0.1/";
-})->name('basepth');*/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/signin','SessionController@index')->name('signin');
+Route::post('/signin','SessionController@authenticate')->name('signinenter');
 
-Route::get('/setting/personal', 'SettingpageController@personal')->name('personalSetting');
-Route::get('/setting/account', 'SettingpageController@account')->name('accountSetting');
-Route::get('/setting/changepassword', 'SettingpageController@changePassword')->name('changePasswordSetting');
-Route::get('/setting/hobbies', 'SettingpageController@hobbies')->name('hobbiesSetting');
-Route::get('/setting/education', 'SettingpageController@education')->name('educationSetting');
+Route::get('/home{id}', 'HomeController@index')->name('home');*/
 
-Route::get('/setting/notification', 'SettingpageController@notification')->name('notificationSetting');
-Route::get('/setting/followrequest', 'SettingpageController@followrequest')->name('followrequestSetting');
+Route::group(['middleware' => 'auth'],function(){
+
+
+	Route::get('/profile',function(){return view('profile');})->name('profile');
+	Route::get('/newsfeed',function(){return view('newsfeed');})->name('newsfeed');
+	Route::get('/setting/personal', 'SettingpageController@personal')->name('personalSetting');
+	Route::get('/setting/account', 'SettingpageController@account')->name('accountSetting');
+	Route::get('/setting/changepassword', 'SettingpageController@changePassword')->name('changePasswordSetting');
+	Route::get('/setting/hobbies', 'SettingpageController@hobbies')->name('hobbiesSetting');
+	Route::get('/setting/education', 'SettingpageController@education')->name('educationSetting');
+
+	Route::get('/setting/notification', 'SettingpageController@notification')->name('notificationSetting');
+	Route::get('/setting/followrequest', 'SettingpageController@followrequest')->name('followrequestSetting');
+});

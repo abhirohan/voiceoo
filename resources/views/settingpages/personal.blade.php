@@ -1,7 +1,5 @@
-@extends('layout-profile')
-	@include('layouts.nav-profile')
-	@include('layouts.sidebar-profile-left')
-@section('setting-personal')
+@extends('layout-setting')
+@section('settings')
 	@include('settingpages.setting-header')
 
 	<!-- Your Account Personal Information -->

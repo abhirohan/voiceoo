@@ -19,7 +19,7 @@
 			</div>
 		</div>
 
-		<img class="img-bottom" src="{{ route('basepth') }}/img/account-bottom.png" alt="User Setting">
+		<img class="img-bottom" src="{{ route('basepath') }}/img/account-bottom.png" alt="User Setting">
 	</div>
 
 	<!-- ... end Main Header Your Account -->

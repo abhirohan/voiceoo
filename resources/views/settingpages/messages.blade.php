@@ -1,7 +1,5 @@
-@extends('layout-profile')
-	@include('layouts.nav-profile')
-	@include('layouts.sidebar-profile-left')
-@section('setting-account')
+@extends('layout-setting')
+@section('settings')
 	@include('settingpages.setting-header')
 	
 	<!-- Your Account Personal Information -->
@@ -20,7 +18,7 @@
 							<ul class="notification-list chat-message">
 								<li>
 									<div class="author-thumb">
-										<img src="{{ route('basepth') }}/img/avatar8-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar8-sm.jpg" alt="author">
 									</div>
 									<div class="notification-event">
 										<a href="#" class="h6 notification-friend">Diana Jameson</a>
@@ -38,7 +36,7 @@
 
 								<li>
 									<div class="author-thumb">
-										<img src="{{ route('basepth') }}/img/avatar9-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar9-sm.jpg" alt="author">
 									</div>
 									<div class="notification-event">
 										<a href="#" class="h6 notification-friend">Jake Parker</a>
@@ -55,7 +53,7 @@
 								</li>
 								<li>
 									<div class="author-thumb">
-										<img src="{{ route('basepth') }}/img/avatar10-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar10-sm.jpg" alt="author">
 									</div>
 									<div class="notification-event">
 										<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
@@ -72,10 +70,10 @@
 
 								<li class="chat-group">
 									<div class="author-thumb">
-										<img src="{{ route('basepth') }}/img/avatar11-sm.jpg" alt="author">
-										<img src="{{ route('basepth') }}/img/avatar12-sm.jpg" alt="author">
-										<img src="{{ route('basepth') }}/img/avatar13-sm.jpg" alt="author">
-										<img src="{{ route('basepth') }}/img/avatar10-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar11-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar12-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar13-sm.jpg" alt="author">
+										<img src="{{ route('basepath') }}/img/avatar10-sm.jpg" alt="author">
 									</div>
 									<div class="notification-event">
 										<a href="#" class="h6 notification-friend">You, Faye, Ed & Jet +3</a>
@@ -105,7 +103,7 @@
 									<ul class="notification-list chat-message chat-message-field">
 										<li>
 											<div class="author-thumb">
-												<img src="{{ route('basepth') }}/img/avatar14-sm.jpg" alt="author">
+												<img src="{{ route('basepath') }}/img/avatar14-sm.jpg" alt="author">
 											</div>
 											<div class="notification-event">
 												<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
@@ -115,7 +113,7 @@
 
 										<li>
 											<div class="author-thumb">
-												<img src="{{ route('basepth') }}/img/author-page.jpg" alt="author">
+												<img src="{{ route('basepath') }}/img/author-page.jpg" alt="author">
 											</div>
 											<div class="notification-event">
 												<span class="chat-message-item">Don’t worry Mathilda!</span>
@@ -126,7 +124,7 @@
 
 										<li>
 											<div class="author-thumb">
-												<img src="{{ route('basepth') }}/img/avatar14-sm.jpg" alt="author">
+												<img src="{{ route('basepath') }}/img/avatar14-sm.jpg" alt="author">
 											</div>
 											<div class="notification-event">
 												<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
@@ -152,137 +150,137 @@
 												<ul class="more-dropdown more-with-triangle triangle-bottom-right">
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat1.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat1.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat2.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat2.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat3.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat3.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat4.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat4.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat5.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat5.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat6.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat6.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat7.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat7.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat8.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat8.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat9.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat9.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat10.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat10.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat11.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat11.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat12.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat12.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat13.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat13.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat14.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat14.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat15.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat15.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat16.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat16.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat17.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat17.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat18.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat18.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat19.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat19.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat20.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat20.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat21.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat21.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat22.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat22.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat23.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat23.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat24.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat24.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat25.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat25.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat26.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat26.png" alt="icon">
 														</a>
 													</li>
 													<li>
 														<a href="#">
-															<img src="{{ route('basepth') }}/img/icon-chat27.png" alt="icon">
+															<img src="{{ route('basepath') }}/img/icon-chat27.png" alt="icon">
 														</a>
 													</li>
 												</ul>
@@ -307,7 +305,7 @@
 									<ul class="notification-list chat-message chat-message-field">
 										<li>
 											<div class="author-thumb">
-												<img src="{{ route('basepth') }}/img/avatar10-sm.jpg" alt="author">
+												<img src="{{ route('basepath') }}/img/avatar10-sm.jpg" alt="author">
 											</div>
 											<div class="notification-event">
 												<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
@@ -318,7 +316,7 @@
 
 										<li>
 											<div class="author-thumb">
-												<img src="{{ route('basepth') }}/img/author-page.jpg" alt="author">
+												<img src="{{ route('basepath') }}/img/author-page.jpg" alt="author">
 											</div>
 											<div class="notification-event">
 												<a href="#" class="h6 notification-friend">James Spiegel</a>
@@ -328,8 +326,8 @@
 												I need to ask him something before moving on. Anyway, here’s a preview!
 											</span>
 												<div class="added-photos">
-													<img src="{{ route('basepth') }}/img/photo-message1.jpg" alt="photo">
-													<img src="{{ route('basepth') }}/img/photo-message2.jpg" alt="photo">
+													<img src="{{ route('basepath') }}/img/photo-message1.jpg" alt="photo">
+													<img src="{{ route('basepath') }}/img/photo-message2.jpg" alt="photo">
 													<span class="photos-name">icons.jpeg; bunny.jpeg</span>
 												</div>
 											</div>
@@ -337,7 +335,7 @@
 
 										<li>
 											<div class="author-thumb">
-												<img src="{{ route('basepth') }}/img/avatar10-sm.jpg" alt="author">
+												<img src="{{ route('basepath') }}/img/avatar10-sm.jpg" alt="author">
 											</div>
 											<div class="notification-event">
 												<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
@@ -368,137 +366,137 @@
 											<ul class="more-dropdown more-with-triangle triangle-bottom-right">
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat1.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat1.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat2.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat2.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat3.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat3.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat4.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat4.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat5.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat5.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat6.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat6.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat7.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat7.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat8.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat8.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat9.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat9.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat10.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat10.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat11.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat11.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat12.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat12.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat13.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat13.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat14.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat14.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat15.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat15.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat16.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat16.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat17.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat17.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat18.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat18.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat19.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat19.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat20.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat20.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat21.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat21.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat22.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat22.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat23.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat23.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat24.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat24.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat25.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat25.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat26.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat26.png" alt="icon">
 													</a>
 												</li>
 												<li>
 													<a href="#">
-														<img src="{{ route('basepth') }}/img/icon-chat27.png" alt="icon">
+														<img src="{{ route('basepath') }}/img/icon-chat27.png" alt="icon">
 													</a>
 												</li>
 											</ul>

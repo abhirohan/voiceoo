@@ -1,7 +1,5 @@
-@extends('layout-profile')
-	@include('layouts.nav-profile')
-	@include('layouts.sidebar-profile-left')
-@section('setting-account')
+@extends('layout-setting')
+@section('settings')
 	@include('settingpages.setting-header')
 	
 	<!-- Your Account Personal Information -->
@@ -18,7 +16,7 @@
 					<ul class="notification-list">
 						<li>
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar1-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar1-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								<a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new <a href="#" class="notification-link">profile status</a>.
@@ -36,7 +34,7 @@
 
 						<li class="un-read">
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar2-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar2-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								You and <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on <a href="#" class="notification-link">his wall</a>.
@@ -54,7 +52,7 @@
 
 						<li class="with-comment-photo">
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar3-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar3-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								<a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your <a href="#" class="notification-link">photo</a>.
@@ -65,7 +63,7 @@
 								</span>
 
 							<div class="comment-photo">
-								<img src="{{ route('basepth') }}/img/comment-photo.jpg" alt="photo">
+								<img src="{{ route('basepath') }}/img/comment-photo.jpg" alt="photo">
 								<span>“She looks incredible in that outfit! We should see each...”</span>
 							</div>
 							<div class="more">
@@ -76,7 +74,7 @@
 
 						<li>
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar4-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar4-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								<a href="#" class="h6 notification-friend">Chris Greyson</a> liked your <a href="#" class="notification-link">profile status</a>.
@@ -93,7 +91,7 @@
 
 						<li>
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar5-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar5-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								<a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in <a href="#" class="notification-link">Gotham Bar</a>.
@@ -111,7 +109,7 @@
 
 						<li>
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar6-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar6-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								<a href="#" class="h6 notification-friend">James Summers</a> commented on your new <a href="#" class="notification-link">profile status</a>.
@@ -129,7 +127,7 @@
 
 						<li>
 							<div class="author-thumb">
-								<img src="{{ route('basepth') }}/img/avatar7-sm.jpg" alt="author">
+								<img src="{{ route('basepath') }}/img/avatar7-sm.jpg" alt="author">
 							</div>
 							<div class="notification-event">
 								<a href="#" class="h6 notification-friend">Marina Valentine</a> commented on your new <a href="#" class="notification-link">profile status</a>.
