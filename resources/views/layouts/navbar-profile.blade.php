@@ -142,7 +142,7 @@
 				</div>
 			</div>
 
-			<div class="control-icon more has-items">
+			{{-- <div class="control-icon more has-items">
 				<svg class="olymp-chat---messages-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-chat---messages-icon"></use></svg>
 				<div class="label-avatar bg-purple">2</div>
 
@@ -231,7 +231,7 @@
 
 					<a href="#" class="view-all bg-purple">View All Messages</a>
 				</div>
-			</div>
+			</div> --}}
 
 			<div class="control-icon more has-items">
 				<svg class="olymp-thunder-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-thunder-icon"></use></svg>
@@ -375,10 +375,15 @@
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
 										<svg class="olymp-logout-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-logout-icon"></use></svg>
 
 										<span>Log Out</span>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
 									</a>
 								</li>
 							</ul>
@@ -488,14 +493,14 @@
 				</a>
 			</li>
 
-			<li class="nav-item">
+			{{-- <li class="nav-item">
 				<a class="nav-link" data-toggle="tab" href="#chat" role="tab">
 					<div class="control-icon has-items">
 						<svg class="olymp-chat---messages-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-chat---messages-icon"></use></svg>
 						<div class="label-avatar bg-purple">2</div>
 					</div>
 				</a>
-			</li>
+			</li> --}}
 
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="tab" href="#notification" role="tab">
@@ -630,7 +635,7 @@
 
 		</div>
 
-		<div class="tab-pane " id="chat" role="tabpanel">
+		{{-- <div class="tab-pane " id="chat" role="tabpanel">
 
 			<div class="mCustomScrollbar" data-mcs-theme="dark">
 				<div class="ui-block-title ui-block-title-small">
@@ -716,7 +721,7 @@
 				<a href="#" class="view-all bg-purple">View All Messages</a>
 			</div>
 
-		</div>
+		</div> --}}
 
 		<div class="tab-pane " id="notification" role="tabpanel">
 

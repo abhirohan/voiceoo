@@ -385,7 +385,7 @@ input, .form-control {
   color: #fff;
   font-size: 9px;
   right: 20px;
-  top: 50%;
+  top: 37%;
   margin-top: -10px;
   font-family: FontAwesome; }
 
@@ -1502,7 +1502,7 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
   background-color: #fff;
   overflow: hidden;
   position: relative;
-  padding-left: 71px;
+  padding-left: 0px;
   margin-bottom: 20px;
   min-height: 655px; }
   .registration-login-form .nav-tabs {
@@ -5121,6 +5121,42 @@ ol ol li {
 
 .c-spotify {
   color: #1ed760; }
+.c-youtube{
+  color:#C4302B;
+}
+.c-google{
+  color:#C63D2D;
+}
+.c-vk{
+  color:#4C75A3;
+}
+.c-pinterest{
+  color:#910101;
+}
+.c-tumblr{
+  color:#34526F;
+}
+.c-linkedin{
+  color:#4875B4;
+}
+.c-vine{
+  color:#44BBFF;
+}
+.c-instagram{
+  color:#4E433C
+}
+.c-flickr{
+  color:#4E433C;
+}
+.c-github{
+  color:#4E433C;
+}
+.c-soundcloud{
+  color:#FF3300;
+}
+.c-skype{
+  color:#00AFF0;
+}
 
 .bold {
   font-weight: 800; }

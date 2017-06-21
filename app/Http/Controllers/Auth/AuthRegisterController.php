@@ -49,9 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
+            'dob'        => 'required',
+            'gender'     => 'required',
+            'checktc'    => 'required'
         ]);
     }
 
@@ -63,10 +67,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $checktc = implode(',', $data['checktc']);
+        $ip_address          = $_SERVER['REMOTE_ADDR'];
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+                                            'email' => $data['email'],
+                                            'password' => bcrypt($data['password']),
+                                            'first_name' =>  $data['first_name'],
+                                            'last_name' =>  $data['last_name'],
+                                            'dob' =>  $data['dob'],
+                                            'gender' =>  $data['gender'],
+                                            'checktc' => $checktc,
+                                            'total_notes' => '0',
+                                            'followers'   => '0',
+                                            'following'=> '0',
+                                            'total_notes_likes'=> '0',
+                                            'total_notes_comment'=> '0',
+                                            'total_notes_views'=> '0',
+                                            'ip_address' => $ip_address
         ]);
         auth()->login($user);
         $currentUsedId = Auth::User()->id; 

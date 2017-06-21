@@ -10,22 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'guest'],function(){
 
-Route::get('/', function () {
-    return view('access-login');
-})->name('basepath');
+	Route::get('/', function () {
+	    return view('access-login');
+	})->name('basepath');
 
-Auth::routes();
+	Auth::routes();
+	Route::get('/newuser','RegisterController@index')->name('registerview');
+	Route::post('/newuser','RegisterController@store')->name('registerhit');
 
-/*Route::get('/signin','SessionController@index')->name('signin');
-Route::post('/signin','SessionController@authenticate')->name('signinenter');
+});
 
-Route::get('/home{id}', 'HomeController@index')->name('home');*/
+/*---------------------------------Auth Middleware---------------------------------*/
 
 Route::group(['middleware' => 'auth'],function(){
 
 
-	Route::get('/profile',function(){return view('profile');})->name('profile');
+	//Profile Route
+	Route::get('/profile',function(){
+		$currentUserId = Auth::User()->id;
+			return redirect()->route('profile',['id' => $currentUserId]);
+	});
+	Route::get('/profile/{id?}',function($id){
+		$userData = DB::table('users')->find($id);
+		return view('profile',compact('userData'));
+	})->name('profile');
+
 	Route::get('/newsfeed',function(){return view('newsfeed');})->name('newsfeed');
 	Route::get('/setting/personal', 'SettingpageController@personal')->name('personalSetting');
 	Route::get('/setting/account', 'SettingpageController@account')->name('accountSetting');
@@ -35,4 +46,7 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::get('/setting/notification', 'SettingpageController@notification')->name('notificationSetting');
 	Route::get('/setting/followrequest', 'SettingpageController@followrequest')->name('followrequestSetting');
+
+	//Setting Save
+	Route::post('/settingsave', 'SettingpageController@storePersonal')->name('savePersonalSetting');
 });

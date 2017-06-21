@@ -5,15 +5,20 @@
 <script src="{{ route('basepath') }}/js/material.min.js"></script>
 <!-- Helper scripts (Tabs, Equal height, Scrollbar, etc) -->
 <script src="{{ route('basepath') }}/js/theme-plugins.js"></script>
-<!-- Init functions -->
-<script src="{{ route('basepath') }}/js/main.js"></script>
+
 
 <!-- Select / Sorting script -->
 <script src="{{ route('basepath') }}/js/selectize.min.js"></script>
 
+<!-- Swiper / Sliders -->
+<script src="{{ route('basepath') }}/js/swiper.jquery.min.js"></script>
+
 <!-- Datepicker input field script-->
 <script src="{{ route('basepath') }}/js/moment.min.js"></script>
 <script src="j{{ route('basepath') }}/js/daterangepicker.min.js"></script>
+<!-- Init functions -->
+<script src="{{ route('basepath') }}/js/main.js"></script>
+
 
 <!-- Load more news AJAX script -->
 <script src="{{ route('basepath') }}/js/ajax-pagination.js"></script>

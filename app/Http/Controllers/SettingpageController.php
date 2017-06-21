@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+//use App\Http\Controllers\Auth;
+Use App\User;
 class SettingpageController extends Controller
 {
     public function __construct(){
@@ -35,5 +36,15 @@ class SettingpageController extends Controller
 
     public function followrequest(){
         return view('settingpages.followrequest');
+    }
+    //Save Setting
+    public function storePersonal(Request $request){
+       //dd($request);
+       $this->validate(request(),[
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'email'      => 'required|max:255|email|unique:users'
+        ]);
+       $settingSave = App::
     }
 }
