@@ -54,7 +54,6 @@ class RegisterController extends Controller
 
         $checktc = implode(',', request('checktc'));
         $ip_address          = $_SERVER['REMOTE_ADDR'];
-        //dd(request('first_name'));
         $user = User::create(
                                         [
                                             'first_name' =>  request('first_name'),

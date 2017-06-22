@@ -7,6 +7,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-9 push-xl-3 col-lg-9 push-lg-3 col-md-12 col-sm-12 col-xs-12">
+				@if(Session::has('settingSavemsg'))
+					<span>{{ Session::get('settingSavemsg') }}</span>
+				@endif
 				<div class="ui-block">
 					<div class="ui-block-title">
 						<h6 class="title">Personal Information</h6>

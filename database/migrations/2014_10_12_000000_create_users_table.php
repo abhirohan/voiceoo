@@ -41,6 +41,7 @@ class CreateUsersTable extends Migration
             $table->string('school')->nullable();
             $table->string('university')->nullable();
             $table->string('occupation')->nullable();
+            $table->string('birthplace')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('religious_belifs')->nullable();
             $table->string('political_incline')->nullable();
@@ -53,7 +54,7 @@ class CreateUsersTable extends Migration
             $table->text('about')->nullable(); 
             $table->enum('user_type',array('subscriber','admin'));   
             $table->string('session_token')->nullable();  
-            $table->integer('phone')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->string('alternate_email')->nullable();           
             $table->rememberToken();
             $table->timestamps();

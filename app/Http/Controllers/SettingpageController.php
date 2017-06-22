@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
+Use App\Social_user;
 Use App\User;
 class SettingpageController extends Controller
 {
@@ -39,12 +40,39 @@ class SettingpageController extends Controller
     }
     //Save Setting
     public function storePersonal(Request $request){
-       //dd($request);
        $this->validate(request(),[
             'first_name' => 'required|string|max:255',
             'last_name'  => 'required|string|max:255',
-            'email'      => 'required|max:255|email|unique:users'
+            'email'      => 'required|max:255|email'
         ]);
-       $settingSave = App::
+
+       //dd($request);
+        $ip_address       = $_SERVER['REMOTE_ADDR'];
+        $currentLoggenInUser = Auth::User()->id;
+        $personalinfo     = User::find($currentLoggenInUser);
+
+        $personalinfo->first_name       = request('first_name');
+        $personalinfo->alternate_email  =  request('email');
+        $personalinfo->dob              =  request('dob');
+        $personalinfo->last_name        =  request('last_name');
+        $personalinfo->website          =  request('website');
+        $personalinfo->phone            =  request('phone_number');
+        $personalinfo->country          =  request('country');
+        $personalinfo->state            =  request('state');
+        $personalinfo->city             =  request('city');
+        $personalinfo->about            =  request('about_me');
+        $personalinfo->gender           =  request('gender');
+        $personalinfo->religious_belifs =  request('religious');
+        $personalinfo->birthplace       =  request('birthplace');
+        $personalinfo->occupation       =  request('occupation');
+        $personalinfo->marital_status   =  request('marital_status');
+        $personalinfo->political_incline=  request('political_view');
+        $personalinfo->ip_address       =  $ip_address;
+
+        $settingSave = $personalinfo->save();
+        if($settingSave){
+            \Session::flash('settingSavemsg','Information has updated successfully');
+            return redirect()->route('personalSetting');
+        }
     }
 }
