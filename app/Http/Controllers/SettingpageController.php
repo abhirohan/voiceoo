@@ -12,7 +12,10 @@ class SettingpageController extends Controller
         $this->middleware('auth');
     }
     public function personal(){
-        return view('settingpages.personal');
+        $currentLoggedInUser = Auth::User()->id;
+        ($currentLoggedInUser);
+        $userDetails = User::find($currentLoggedInUser);
+        return view('settingpages.personal',compact('userDetails'));
     }
     
     public function account(){
@@ -48,8 +51,8 @@ class SettingpageController extends Controller
 
        //dd($request);
         $ip_address       = $_SERVER['REMOTE_ADDR'];
-        $currentLoggenInUser = Auth::User()->id;
-        $personalinfo     = User::find($currentLoggenInUser);
+        $currentLoggedInUser = Auth::User()->id;
+        $personalinfo     = User::find($currentLoggedInUser);
 
         $personalinfo->first_name       = request('first_name');
         $personalinfo->alternate_email  =  request('email');
@@ -62,7 +65,7 @@ class SettingpageController extends Controller
         $personalinfo->city             =  request('city');
         $personalinfo->about            =  request('about_me');
         $personalinfo->gender           =  request('gender');
-        $personalinfo->religious_belifs =  request('religious');
+        $personalinfo->religious_belifs =  request('religious_b');
         $personalinfo->birthplace       =  request('birthplace');
         $personalinfo->occupation       =  request('occupation');
         $personalinfo->marital_status   =  request('marital_status');

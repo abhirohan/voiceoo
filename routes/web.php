@@ -49,4 +49,9 @@ Route::group(['middleware' => 'auth'],function(){
 
 	//Setting Save
 	Route::post('/settingsave', 'SettingpageController@storePersonal')->name('savePersonalSetting');
+
+
+
+	//Logout
+	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 });
