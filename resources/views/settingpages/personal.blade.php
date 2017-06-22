@@ -19,10 +19,15 @@
 							{{ csrf_field() }}
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
+									<div class="form-group label-floating {{ $errors->has('first_name') ? ' has-danger' : '' }}">
 										<label class="control-label">First Name</label>
 										<input class="form-control" name="first_name" placeholder="" type="text" value="{{ $userDetails->first_name }}">
 									</div>
+									@if ($errors->has('first_name'))
+	                                    <span>
+	                                        <strong>{{ $errors->first('first_name') }}</strong>
+	                                    </span>
+	                                @endif
 
 									<div class="form-group label-floating">
 										<label class="control-label">Alternate Email</label>
@@ -39,10 +44,15 @@
 								</div>
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
+									<div class="form-group label-floating {{ $errors->has('last_name') ? ' has-danger' : '' }}">
 										<label class="control-label">Last Name</label>
 										<input class="form-control" name="last_name" placeholder="" type="text" value="{{ $userDetails->last_name }}">
 									</div>
+									@if ($errors->has('last_name'))
+	                                    <span>
+	                                        <strong>{{ $errors->first('last_name') }}</strong>
+	                                    </span>
+	                                @endif
 
 									<div class="form-group label-floating">
 										<label class="control-label">Your Website</label>

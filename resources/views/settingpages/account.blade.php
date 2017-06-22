@@ -16,7 +16,7 @@
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="form-group label-floating is-select">
-										<label class="control-label">Who Can Friend You?</label>
+										<label class="control-label">Who Can Follow You?</label>
 										<select class="selectpicker form-control">
 											<option value="EO">Everyone</option>
 											<option value="NO">No One</option>
@@ -25,16 +25,16 @@
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="form-group label-floating is-select">
-										<label class="control-label">Who Can View Your Posts</label>
+										<label class="control-label">Who Can View Your Notes/Posts</label>
 										<select class="selectpicker form-control">
-											<option value="US">Friends Only</option>
+											<option value="US">Followers Only</option>
 											<option value="EO">Everyone</option>
 										</select>
 									</div>
 								</div>
 
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="description-toggle">
+									{{-- <div class="description-toggle">
 										<div class="description-toggle-content">
 											<div class="h6">Notifications Sound</div>
 											<p>A sound will be played each time you receive a new activity notification</p>
@@ -45,7 +45,7 @@
 												<input type="checkbox" checked="">
 											</label>
 										</div>
-									</div>
+									</div> --}}
 									<div class="description-toggle">
 										<div class="description-toggle-content">
 											<div class="h6">Notifications Email</div>
@@ -60,8 +60,8 @@
 									</div>
 									<div class="description-toggle">
 										<div class="description-toggle-content">
-											<div class="h6">Friend’s Birthdays</div>
-											<p>Choose wheather or not receive notifications about your friend’s birthdays on your newsfeed</p>
+											<div class="h6">Folk's Birthdays</div>
+											<p>Choose wheather or not receive notifications about  folk's(followers/following) birthdays on your newsfeed</p>
 										</div>
 
 										<div class="togglebutton">
@@ -70,7 +70,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="description-toggle">
+								{{-- 	<div class="description-toggle">
 										<div class="description-toggle-content">
 											<div class="h6">Chat Message Sound</div>
 											<p>A sound will be played each time you receive a new message on an inactive chat window</p>
@@ -81,13 +81,13 @@
 												<input type="checkbox" checked="">
 											</label>
 										</div>
-									</div>
+									</div> --}}
 								</div>
 
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								{{-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
-								</div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								</div> --}}
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<button class="btn btn-primary btn-lg full-width">Save all Changes</button>
 								</div>
 							</div>

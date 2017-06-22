@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 Use App\Social_user;
 Use App\User;
 class SettingpageController extends Controller
@@ -13,7 +14,6 @@ class SettingpageController extends Controller
     }
     public function personal(){
         $currentLoggedInUser = Auth::User()->id;
-        ($currentLoggedInUser);
         $userDetails = User::find($currentLoggedInUser);
         return view('settingpages.personal',compact('userDetails'));
     }
@@ -45,8 +45,7 @@ class SettingpageController extends Controller
     public function storePersonal(Request $request){
        $this->validate(request(),[
             'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|max:255|email'
+            'last_name'  => 'required|string|max:255'
         ]);
 
        //dd($request);
@@ -77,5 +76,34 @@ class SettingpageController extends Controller
             \Session::flash('settingSavemsg','Information has updated successfully');
             return redirect()->route('personalSetting');
         }
+    }
+
+    public function storepassword(Request $request){
+       $this->validate(request(),[
+            'current_password' => 'required|string|min:6',
+            'new_password' => 'required|string|min:6',
+            'new_confirm_password' => 'required|string|min:6|same:new_password',
+        ]);
+        $currentLoggedInUser = Auth::User()->id;
+        $ip_address          = $_SERVER['REMOTE_ADDR'];
+        $userDetails         = User::find($currentLoggedInUser);
+
+        $exectPassword  = $userDetails->password;
+        $newPassword  = bcrypt(request('new_password'));
+        $checkPassword= bcrypt(request('current_password'));
+        //dd($checkPassword);
+        if(Hash::check(request('current_password'),$exectPassword)){
+            $userDetails->password   = bcrypt(request('new_password'));
+            $userDetails->ip_address = $ip_address;
+            $userDetails->save();
+            \Session::flash('changpasswordmsg','Password has changed successfully');
+            return redirect()->route('changePasswordSetting');
+        }else{
+            \Session::flash('changpasswordmsg','Current password in not correct.Please try again.');
+            return redirect()->route('changePasswordSetting');
+        }
+
+
+
     }
 }
