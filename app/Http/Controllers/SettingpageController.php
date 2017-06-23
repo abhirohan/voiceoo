@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 Use App\User;
 Use App\Social_user;
 Use App\Interest;
+Use App\Education;
+Use App\Job;
 use Session;
 class SettingpageController extends Controller
 {
@@ -176,5 +178,43 @@ class SettingpageController extends Controller
             \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', Your Information has updated successfully.');
             return redirect()->route('hobbiesSetting');
         }
+    }
+
+    public function storeEducation(Request $request){
+
+        $ip_address              = $_SERVER['REMOTE_ADDR'];
+        $currentLoggedInUser     = Auth::User()->id;
+        $currentLoggedInUsername = Auth::User()->first_name;
+        $eduUserFind             = Education::where('user_id',$currentLoggedInUser)->count();
+        
+        /*if($eduUserFind > 0){
+            $eduUser            = Education::where('user_id',$currentLoggedInUser)->first();
+        }else{
+            $eduUser            = new Education();
+        }
+*/
+
+        $count = count($request['title']); // here we will know how many entries have been posted
+        if($count == $eduUserFind){
+            \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', No change has made yet.');
+            return redirect()->route('educationSetting');
+        }
+        $education = array();
+        for($i=0; $i<$count; $i++){
+            if(!empty($request['title'][$i])){
+                array_push($education, array( 
+                  'user_id'           => $currentLoggedInUser,
+                  'title'             => $request['title'][$i], 
+                  'school_university' => $request['school'][$i], 
+                  'year'              => $request['period'][$i],
+                  'description'       => $request['description'][$i],
+                  'ip_address'        => $ip_address
+                ));
+            }
+        }
+        Education::insert($education);
+        \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', Your education data has updated successfully.');
+        return redirect()->route('educationSetting');
+           
     }
 }

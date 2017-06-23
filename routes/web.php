@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('/changepassword', 'SettingpageController@storePassword')->name('saveNewPasswordSetting');
 	Route::post('/settingsocial', 'SettingpageController@storeSocial')->name('saveSocialSetting');
 	Route::post('/settinginterest', 'SettingpageController@storeInterest')->name('saveinterestSetting');
+	Route::post('/settingeducation', 'SettingpageController@storeEducation')->name('saveEducationSetting');
 
 
 
