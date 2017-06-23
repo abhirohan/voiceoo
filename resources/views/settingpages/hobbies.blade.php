@@ -21,20 +21,20 @@
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="form-group label-floating">
 										<label class="control-label">Hobbies</label>
-									<textarea class="form-control" name="hobbies" placeholder="">{{ $userInterest->hobbies}}
+									<textarea class="form-control" name="hobbies" placeholder="">{{ $userInterest['hobbies'] }}
 									</textarea>
 									</div>
 									<div class="form-group label-floating">
 										<label class="control-label">Favourite TV Shows</label>
-										<textarea class="form-control" name="fav_tv" placeholder="">{{$userInterest->tv_shows}}</textarea>
+										<textarea class="form-control" name="fav_tv" placeholder="">{{ $userInterest['tv_shows'] }}</textarea>
 									</div>
 									<div class="form-group label-floating">
 										<label class="control-label">Favourite Movies</label>
-										<textarea class="form-control" name="fav_movies" placeholder="">{{ $userInterest->fav_movies }}</textarea>
+										<textarea class="form-control" name="fav_movies" placeholder="">{{ $userInterest['fav_movies'] }}</textarea>
 									</div>
 									<div class="form-group label-floating">
 										<label class="control-label">Favourite Games</label>
-										<textarea class="form-control" name="fav_games" placeholder="">{{ $userInterest->fav_games }}</textarea>
+										<textarea class="form-control" name="fav_games" placeholder="">{{ $userInterest['fav_games'] }}</textarea>
 									</div>
 
 									<a href="{{ route('profile') }}" class="btn btn-secondary btn-lg full-width">Cancel</a>
@@ -43,19 +43,19 @@
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="form-group label-floating">
 										<label class="control-label">Favourite Music Bands / Artists</label>
-										<textarea class="form-control" name="fav_music" placeholder="">{{ $userInterest->music_artists}}</textarea>
+										<textarea class="form-control" name="fav_music" placeholder="">{{ $userInterest['music_artists'] }}</textarea>
 									</div>
 									<div class="form-group label-floating">
 										<label class="control-label">Favourite Books</label>
-										<textarea class="form-control" name="fav_books" placeholder="">{{ $userInterest->fav_books }}</textarea>
+										<textarea class="form-control" name="fav_books" placeholder="">{{ $userInterest['fav_books'] }}</textarea>
 									</div>
 									<div class="form-group label-floating">
 										<label class="control-label">Favourite Writers</label>
-										<textarea class="form-control" name="fav_writers" placeholder="">{{ $userInterest->fav_writers }}</textarea>
+										<textarea class="form-control" name="fav_writers" placeholder="">{{ $userInterest['fav_writers'] }}</textarea>
 									</div>
 									<div class="form-group label-floating">
 										<label class="control-label">Other Interests</label>
-										<textarea class="form-control" name="other_interest" placeholder="">{{ $userInterest->other_interest}}</textarea>
+										<textarea class="form-control" name="other_interest" placeholder="">{{ $userInterest['other_interest'] }}</textarea>
 									</div>
 
 									<button type="submit" class="btn btn-primary btn-lg full-width">Save all Changes</button>

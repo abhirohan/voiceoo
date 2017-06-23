@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 Use App\User;
 Use App\Social_user;
 Use App\Interest;
+use Session;
 class SettingpageController extends Controller
 {
     public function __construct(){

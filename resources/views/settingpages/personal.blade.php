@@ -142,93 +142,93 @@
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Facebook Account</label>
-										<input class="form-control" name="c_facebook" type="text" value="{{ $userSocial->facebook }}">
+										<input class="form-control" name="c_facebook" type="text" value="{{ $userSocial['facebook'] }}">
 										<i class="fa fa-facebook c-facebook" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Twitter Account</label>
-										<input class="form-control" name="c_twitter" type="text" value="{{ $userSocial->twitter }}">
+										<input class="form-control" name="c_twitter" type="text" value="{{ $userSocial['twitter'] }}">
 										<i class="fa fa-twitter c-twitter" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Google+ Account</label>
-										<input class="form-control" type="text" name="c_google" value="{{ $userSocial->google_plus }}">
+										<input class="form-control" type="text" name="c_google" value="{{ $userSocial['google_plus'] }}">
 										<i class="fa fa-google-plus c-google" aria-hidden="true"></i>
 									</div>
 
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Vk Account</label>
-										<input class="form-control" name="c_vk" type="text" value="{{ $userSocial->vk }}">
+										<input class="form-control" name="c_vk" type="text" value="{{ $userSocial['vk'] }}">
 										<i class="fa fa-vk c-vk" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Pinterest Account</label>
-										<input class="form-control" name="c_pin" type="text" value="{{ $userSocial->pinterest }}">
+										<input class="form-control" name="c_pin" type="text" value="{{ $userSocial['pinterest'] }}">
 										<i class="fa fa-pinterest-p c-google" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Tumblr Account</label>
-										<input class="form-control" name="c_tumblr" type="text" value="{{ $userSocial->tumblr }}">
+										<input class="form-control" name="c_tumblr" type="text" value="{{ $userSocial['tumblr'] }}">
 										<i class="fa fa-tumblr c-tumblr" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Linkedin Account</label>
-										<input class="form-control" name="c_linkedin" type="text" value="{{ $userSocial->linkedin }}">
+										<input class="form-control" name="c_linkedin" type="text" value="{{ $userSocial['linkedin'] }}">
 										<i class="fa fa-linkedin c-linkedin" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Skype Account</label>
-										<input class="form-control" name="c_skype" type="text" value="{{ $userSocial->skype }}">
+										<input class="form-control" name="c_skype" type="text" value="{{ $userSocial['skype'] }}">
 										<i class="fa fa-skype c-skype" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Instagram Account</label>
-										<input class="form-control" name="c_insta" type="text" value="{{ $userSocial->instagram }}">
+										<input class="form-control" name="c_insta" type="text" value="{{ $userSocial['instagram'] }}">
 										<i class="fa fa-instagram c-instagram" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Github Account</label>
-										<input class="form-control" name="c_github" type="text" value="{{ $userSocial->github }}">
+										<input class="form-control" name="c_github" type="text" value="{{ $userSocial['github'] }}">
 										<i class="fa fa-github c-github" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your soundcloud Account</label>
-										<input class="form-control" name="c_soundcloud" type="text" value="{{ $userSocial->soundcloud }}">
+										<input class="form-control" name="c_soundcloud" type="text" value="{{ $userSocial['soundcloud'] }}">
 										<i class="fa fa-soundcloud c-soundcloud" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Flickr Account</label>
-										<input class="form-control" name="c_flickr" type="text" value="{{ $userSocial->flickr }}">
+										<input class="form-control" name="c_flickr" type="text" value="{{ $userSocial['flickr'] }}">
 										<i class="fa fa-flickr c-flickr" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Youtube Account</label>
-										<input class="form-control" name="c_youtube" type="text" value="{{ $userSocial->youtube }}">
+										<input class="form-control" name="c_youtube" type="text" value="{{ $userSocial['youtube'] }}">
 										<i class="fa fa-youtube-play c-youtube" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Vine Account</label>
-										<input class="form-control" name="c_vine" type="text" value="{{ $userSocial->vine }}">
+										<input class="form-control" name="c_vine" type="text" value="{{ $userSocial['vine'] }}">
 										<i class="fa fa-vine c-vine" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your RSS Feed Account</label>
-										<input class="form-control" name="c_rss" type="text" value="{{ $userSocial->rss }}">
+										<input class="form-control" name="c_rss" type="text" value="{{ $userSocial['rss'] }}">
 										<i class="fa fa-rss c-rss" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Dribbble Account</label>
-										<input class="form-control" name="c_dribble" type="text" value="{{ $userSocial->dribble }}">
+										<input class="form-control" name="c_dribble" type="text" value="{{ $userSocial['dribble'] }}">
 										<i class="fa fa-dribbble c-dribbble" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Behance Account</label>
-										<input class="form-control" name="c_behance" type="text" value="{{ $userSocial->behance }}">
+										<input class="form-control" name="c_behance" type="text" value="{{ $userSocial['behance'] }}">
 										<i class="fa fa-behance c-github" aria-hidden="true"></i>
 									</div>
 									<div class="form-group with-icon label-floating">
 										<label class="control-label">Your Spotify Account</label>
-										<input class="form-control" name="c_spotify" type="text" value="{{ $userSocial->spotify }}">
+										<input class="form-control" name="c_spotify" type="text" value="{{ $userSocial['spotify'] }}">
 										<i class="fa fa-spotify c-spotify" aria-hidden="true"></i>
 									</div>
 								</div>
