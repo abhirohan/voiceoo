@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-xl-9 push-xl-3 col-lg-9 push-lg-3 col-md-12 col-sm-12 col-xs-12">
 				@if(Session::has('changpasswordmsg'))
-					<span>{{ Session::get('changpasswordmsg') }}</span>
+					<span class="c-spotify"><big>{{ Session::get('changpasswordmsg') }}</big></span>
 				@endif
 				<div class="ui-block">
 					<div class="ui-block-title">

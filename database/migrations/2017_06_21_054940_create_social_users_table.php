@@ -14,26 +14,27 @@ class CreateSocialUsersTable extends Migration
     public function up()
     {
         Schema::create('social_users', function (Blueprint $table) {
-            $table->increments('social_id');
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('google_plus');
-            $table->string('vk');
-            $table->string('pinterest');
-            $table->string('tumblr');
-            $table->string('linkedin');
-            $table->string('skype');
-            $table->string('instagram');
-            $table->string('github');
-            $table->string('soundcloud');
-            $table->string('flickr');
-            $table->string('youtube');
-            $table->string('vine');
-            $table->string('rss');
-            $table->string('dribble');
-            $table->string('Behance');
-            $table->string('spotify');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('google_plus')->nullable();
+            $table->string('vk')->nullable();
+            $table->string('pinterest')->nullable();
+            $table->string('tumblr')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('skype')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('github')->nullable();
+            $table->string('soundcloud')->nullable();
+            $table->string('flickr')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('vine')->nullable();
+            $table->string('rss')->nullable();
+            $table->string('dribble')->nullable();
+            $table->string('behance')->nullable();
+            $table->string('spotify')->nullable();
+            $table->string('ip_address');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
