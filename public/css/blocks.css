@@ -5085,6 +5085,48 @@ ol ol li {
 .bg-dribbble {
   background-color: #f74881; }
 
+.bg-rss {
+  background-color: #fab819; }
+
+.bg-spotify {
+  background-color: #1ed760; }
+.bg-youtube{
+  background-color:#C4302B;
+}
+.bg-google{
+  background-color:#C63D2D;
+}
+.bg-vk{
+  background-color:#4C75A3;
+}
+.bg-pinterest{
+  background-color:#910101;
+}
+.bg-tumblr{
+  background-color:#34526F;
+}
+.bg-linkedin{
+  background-color:#4875B4;
+}
+.bg-vine{
+  background-color:#44BBFF;
+}
+.bg-instagram{
+  background-color:#4E433C
+}
+.bg-flickr{
+  background-color:#4E433C;
+}
+.bg-github{
+  background-color:#4E433C;
+}
+.bg-soundcloud{
+  background-color:#FF3300;
+}
+.bg-skype{
+  background-color:#00AFF0;
+}
+
 .c-white {
   color: #fff; }
 

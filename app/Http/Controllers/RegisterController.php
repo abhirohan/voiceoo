@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\User;
+Use App\Education;
+Use App\Interest;
+Use App\Job;
+Use App\Social_user;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -54,7 +59,7 @@ class RegisterController extends Controller
 
         $checktc = implode(',', request('checktc'));
         $ip_address          = $_SERVER['REMOTE_ADDR'];
-        $user = User::create(
+        $userEntry = User::create(
                                         [
                                             'first_name' =>  request('first_name'),
                                             'last_name' =>  request('last_name'),
@@ -69,14 +74,22 @@ class RegisterController extends Controller
                                             'total_notes_likes'=> '0',
                                             'total_notes_comment'=> '0',
                                             'total_notes_views'=> '0',
+                                            'joined'   => Carbon::now(),
                                             'ip_address' => $ip_address
                                         ]
                                 
                             );
-        \Session::flash('regmessage','Welcome on board');
-        return redirect('login');
+        if( $userEntry ){
+            //$educationEntry = Education::create(['user_id' => $userEntry->id, 'ip_address' => $ip_address]);
+            $interestEntry = Interest::create(['user_id' => $userEntry->id, 'ip_address' => $ip_address]);
+            //$jobEntry = Job::create(['user_id' => $userEntry->id, 'ip_address' => $ip_address]);
+            $socialEntry = Social_user::create(['user_id' => $userEntry->id, 'ip_address' => $ip_address]);
 
-
+            if($interestEntry && $socialEntry ){
+                \Session::flash('regmessage','Welcome on board');
+                return redirect('login'); 
+            }
+        }
     }
 
     /**

@@ -32,11 +32,8 @@ Route::group(['middleware' => 'auth'],function(){
 		$currentUserId = Auth::User()->id;
 			return redirect()->route('profile',['id' => $currentUserId]);
 	});
-	Route::get('/profile/{id?}',function($id){
-		$userData = DB::table('users')->find($id);
-		return view('profile',compact('userData'));
-	})->name('profile');
-
+	Route::get('/profile/{id?}','UserController@index')->name('profile');
+	Route::get('/aboutme/{id?}','UserController@aboutIndex')->name('aboutme');
 	Route::get('/newsfeed',function(){return view('newsfeed');})->name('newsfeed');
 	Route::get('/setting/personal', 'SettingpageController@personal')->name('personalSetting');
 	Route::get('/setting/account', 'SettingpageController@account')->name('accountSetting');
