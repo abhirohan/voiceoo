@@ -508,3 +508,37 @@ var CRUMINA = {};
 
 	});
 })(jQuery);
+/*----------------------Abhsihek's ChangesStarts from here----------------------*/
+
+
+function educationClone() {
+    var titleedu = document.getElementById("titleedu");
+    var schooledu = document.getElementById("schooledu");
+    var periodedu = document.getElementById("periodedu");
+    var descedu = document.getElementById("descedu");
+    var titlecln = titleedu.cloneNode(true);
+    var schoolcln = schooledu.cloneNode(true);
+    var periodcln = periodedu.cloneNode(true);
+    var desccln = descedu.cloneNode(true);
+    var moreedu = document.getElementById("more-edu");
+    moreedu.appendChild(titlecln);
+    moreedu.appendChild(schoolcln);
+    moreedu.appendChild(periodcln);
+    moreedu.appendChild(desccln);
+}
+function workClone() {
+    var titlework = document.getElementById("titlework");
+    var namework = document.getElementById("namework");
+    var periodwork = document.getElementById("periodwork");
+    var descwork = document.getElementById("descwork");
+    var titlecln = titlework.cloneNode(true);
+    var namecln = namework.cloneNode(true);
+    var periodcln = periodwork.cloneNode(true);
+    var desccln = descwork.cloneNode(true);
+    var morework = document.getElementById("more-work");
+    morework.appendChild(titlecln);
+    morework.appendChild(namecln);
+    morework.appendChild(periodcln);
+    morework.appendChild(desccln);
+}
+

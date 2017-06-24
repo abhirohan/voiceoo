@@ -18,75 +18,53 @@
 					<div class="ui-block-content">
 						<form action="{{ route('saveEducationSetting') }}" method="POST">
 							{{ csrf_field() }}
-							<div class="row">
-
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							<div class="row edu-row">
+							@foreach($userEducation as $userEducations)
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="titleedu">
 									<div class="form-group label-floating">
 										<label class="control-label">Title or Place</label>
-										<input class="form-control" name="title[]" placeholder="" type="text" value="The New College of Design">
+										<input class="form-control" name="title[]" placeholder="" type="text" value="{{ $userEducations->title }}">
 									</div>
 								</div>
 
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="schooledu">
 									<div class="form-group label-floating">
 										<label class="control-label">School/University</label>
-										<input class="form-control" name="school[]" placeholder="" type="text" value="asd">
+										<input class="form-control" name="school[]" placeholder="" type="text" value="{{ $userEducations->school_university }}">
 									</div>
 								</div>
 								
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="periodedu">
 									<div class="form-group label-floating">
 										<label class="control-label">Period of Time</label>
-										<input class="form-control" name="period[]" placeholder="" type="text" value="2001 - 2006">
+										<input class="form-control" name="period[]" placeholder="" type="text" value="{{ $userEducations->year }}">
 									</div>
 								</div>
 
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="descedu">
 									<div class="form-group label-floating">
 										<label class="control-label">Description</label>
-										<textarea class="form-control" name="description[]" placeholder=""  >Bachelor of Interactive Design in the New College. It was a five years intensive career. Average: A+
-										</textarea>
+										<textarea class="form-control" name="description[]" placeholder="">{{ $userEducations->description }}</textarea>
 									</div>
 								</div>
-
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Title or Place</label>
-										<input class="form-control" name="title[]" placeholder="" type="text" value="The New College of Design">
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">School/University</label>
-										<input class="form-control" name="school[]" placeholder="" type="text" value="wed">
+								@endforeach
+								<div class="ui-block-content">
+									<div class="row" id="more-edu">
 									</div>
 								</div>
 								
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Period of Time</label>
-										<input class="form-control" name="period[]" placeholder="" type="text" value="2001 - 2006">
-									</div>
-								</div>
-
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Description</label>
-										<textarea class="form-control" name="description[]" placeholder=""  >Bachelor of Interactive Design in the New College. It was a five years intensive career. Average: A+
-										</textarea>
-									</div>
-									<a href="#" class="add-field">
-										<svg class="olymp-plus-icon"><use xlink:href="icons/icons.svg#olymp-plus-icon"></use></svg>
+									<span class="add-field add-field-education" onclick="educationClone()">
+										<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use></svg>
 										<span>Add Education Field</span>
-									</a>
+									</span>
+								</div>
+								
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cancel">
+									<a href="{{ route('educationSetting') }}" class="btn btn-secondary btn-lg full-width">Cancel</a>
 								</div>
 
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-									<button class="btn btn-secondary btn-lg full-width">Cancel</button>
-								</div>
-
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 save-all">
 									<button class="btn btn-primary btn-lg full-width">Save all Changes</button>
 								</div>
 							</div>
@@ -98,76 +76,57 @@
 						<h6 class="title">Your Employement History</h6>
 					</div>
 					<div class="ui-block-content">
-						<form>
-							<div class="row">
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Title or Place</label>
-										<input class="form-control" placeholder="" type="text" value="Digital Design Intern">
+						<form action="{{ route('saveWorkSetting') }}" method="POST">
+							{{ csrf_field() }}
+							<div class="row work-row">
+								@foreach($userWork as $userWorks)
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="titlework">
+										<div class="form-group label-floating">
+											<label class="control-label">Title or Place</label>
+											<input class="form-control" name="title[]" placeholder="" type="text" value="{{ $userWorks->title }}">
+										</div>
 									</div>
-								</div>
 
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Company/Organization</label>
-										<input class="form-control" placeholder="" type="text" value="2006 - 2008">
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="namework">
+										<div class="form-group label-floating">
+											<label class="control-label">Company/Organization</label>
+											<input class="form-control" name="company[]" placeholder="" type="text" value="{{ $userWorks->company }}">
+										</div>
 									</div>
-								</div>
 
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Period of Time</label>
-										<input class="form-control" placeholder="" type="text" value="2006 - 2008">
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="periodwork">
+										<div class="form-group label-floating">
+											<label class="control-label">Period of Time</label>
+											<input class="form-control"  name="timeperiod[]" placeholder="" type="text" value="{{ $userWorks->year }}">
+										</div>
 									</div>
-								</div>
 
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Description</label>
-										<textarea class="form-control" placeholder=""  >Digital Design Intern for the “Multimedz” agency. Was in charge of the communication with the clients.
-										</textarea>
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="descwork">
+										<div class="form-group label-floating">
+											<label class="control-label">Description</label>
+											<textarea class="form-control" name="description[]" placeholder="">{{ $userWorks->description }}</textarea>
+										</div>
 									</div>
-								</div>
+								@endforeach
 
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Title or Place</label>
-										<input class="form-control" placeholder="" type="text" value="Digital Design Intern">
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Company/Organization</label>
-										<input class="form-control" placeholder="" type="text" value="2006 - 2008">
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Period of Time</label>
-										<input class="form-control" placeholder="" type="text" value="2006 - 2008">
+								<div class="ui-block-content">
+									<div class="row" id="more-work">
 									</div>
 								</div>
 
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group label-floating">
-										<label class="control-label">Description</label>
-										<textarea class="form-control" placeholder=""  >Digital Design Intern for the “Multimedz” agency. Was in charge of the communication with the clients.
-										</textarea>
-									</div>
-									<a href="#" class="add-field">
-										<svg class="olymp-plus-icon"><use xlink:href="icons/icons.svg#olymp-plus-icon"></use></svg>
-										<span>Add Education Field</span>
-									</a>
+									<span class="add-field add-field-education" onclick="workClone()">
+										<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use></svg>
+										<span>  Add Work Field</span>
+									</span>
 								</div>
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-									<button class="btn btn-secondary btn-lg full-width">Cancel</button>
+									<a href="{{ route('educationSetting') }}" class="btn btn-secondary btn-lg full-width">Cancel</a>
 								</div>
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-									<button class="btn btn-primary btn-lg full-width">Save all Changes</button>
+									<button type="submit" class="btn btn-primary btn-lg full-width">Save all Changes</button>
 								</div>
 							</div>
 						</form>

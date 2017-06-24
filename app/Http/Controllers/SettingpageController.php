@@ -39,7 +39,12 @@ class SettingpageController extends Controller
     }
 
     public function education(){
-        return view('settingpages.education');
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails         = User::find($currentLoggedInUser);
+        $userEducation       = Education::where('user_id',$currentLoggedInUser)->get();
+        $userWork            = Job::where('user_id',$currentLoggedInUser)->get();
+        return view('settingpages.education',compact('userDetails','userEducation','userWork'));
+
     }
 
     public function notification(){
@@ -181,24 +186,12 @@ class SettingpageController extends Controller
     }
 
     public function storeEducation(Request $request){
-
         $ip_address              = $_SERVER['REMOTE_ADDR'];
         $currentLoggedInUser     = Auth::User()->id;
         $currentLoggedInUsername = Auth::User()->first_name;
-        $eduUserFind             = Education::where('user_id',$currentLoggedInUser)->count();
+        $eduUserFind             = Education::where('user_id',$currentLoggedInUser)->delete();
         
-        /*if($eduUserFind > 0){
-            $eduUser            = Education::where('user_id',$currentLoggedInUser)->first();
-        }else{
-            $eduUser            = new Education();
-        }
-*/
-
         $count = count($request['title']); // here we will know how many entries have been posted
-        if($count == $eduUserFind){
-            \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', No change has made yet.');
-            return redirect()->route('educationSetting');
-        }
         $education = array();
         for($i=0; $i<$count; $i++){
             if(!empty($request['title'][$i])){
@@ -212,9 +205,38 @@ class SettingpageController extends Controller
                 ));
             }
         }
-        Education::insert($education);
-        \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', Your education data has updated successfully.');
-        return redirect()->route('educationSetting');
-           
+        $savecompleted = Education::insert($education);
+        if($savecompleted){
+            \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', Your education data has updated successfully.');
+            return redirect()->route('educationSetting');
+        }
+    }
+
+    public function storeWork(Request $request){
+/*        dd($request);*/
+        $ip_address              = $_SERVER['REMOTE_ADDR'];
+        $currentLoggedInUser     = Auth::User()->id;
+        $currentLoggedInUsername = Auth::User()->first_name;
+        $eduUserFind             = Job::where('user_id',$currentLoggedInUser)->delete();
+        
+        $count = count($request['title']); // here we will know how many entries have been posted
+        $job = array();
+        for($i=0; $i<$count; $i++){
+            if(!empty($request['title'][$i])){
+                array_push($job, array( 
+                  'user_id'           => $currentLoggedInUser,
+                  'title'             => $request['title'][$i], 
+                  'company'           => $request['company'][$i], 
+                  'year'              => $request['timeperiod'][$i],
+                  'description'       => $request['description'][$i],
+                  'ip_address'        => $ip_address
+                ));
+            }
+        }
+        $savecompleted = Job::insert($job);
+        if($savecompleted){
+            \Session::flash('settingSavemsg','Hello '.$currentLoggedInUsername.', Your work data has updated successfully.');
+            return redirect()->route('educationSetting');
+        }
     }
 }
