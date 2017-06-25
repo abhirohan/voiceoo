@@ -1,6 +1,7 @@
 
 <!-- jQuery first, then Other JS. -->
 <script src="{{ route('basepath') }}/js/jquery-3.2.0.min.js"></script>
+<script src="{{ route('basepath') }}/js/croppie.js"></script>
 <!-- Js effects for material design. + Tooltips -->
 <script src="{{ route('basepath') }}/js/material.min.js"></script>
 <!-- Helper scripts (Tabs, Equal height, Scrollbar, etc) -->
@@ -32,6 +33,7 @@
 
 <script src="{{ route('basepath') }}/js/mediaelement-and-player.min.js"></script>
 <script src="{{ route('basepath') }}/js/mediaelement-playlist-plugin.min.js"></script>
+<script src="{{ route('basepath') }}/js/croppie.js"></script>
 
 
 </body>

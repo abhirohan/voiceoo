@@ -76,7 +76,7 @@
 					</div>
 					<div class="top-header-author">
 						<a href="02-ProfilePage.html" class="author-thumb">
-							<img src="{{ route('basepath') }}/img/author-main1.jpg" alt="author">
+							<img src="/uploads/avatars/{{ $userData->avatar }}" alt="{{ $userData->first_name  }} {{ $userData->last_name  }}" style="width:128px; height:128px;">
 						</a>
 						<div class="author-content">
 							<a href="/profile" class="h4 author-name">{{ $userData->first_name  }} {{ $userData->last_name  }}</a>

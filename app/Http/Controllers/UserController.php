@@ -10,6 +10,7 @@ Use App\Interest;
 Use App\Job;
 Use App\Social_user;
 use Carbon\Carbon;
+use Image;
 class UserController extends Controller
 {
     /**
@@ -37,6 +38,28 @@ class UserController extends Controller
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
         return view('about',compact('userData','userEducations','userInterests','userJobs','userSocials'));
+    }
+
+    public function uploadAvatar(Request $request){
+            $avatar = request('imagebase64');
+            list($type, $avatar) = explode(';', $avatar);
+            list(, $avatar)      = explode(',', $avatar);
+            $avatar = base64_decode($avatar);
+            $avtarName = Auth::user()->first_name.".".time()."-".Auth::user()->id;
+            file_put_contents($avtarName.'.png', $avatar);
+            $finalAvatar = $avtarName.'.png';
+            $avtarInfo = getimagesize($finalAvatar);
+            $avtarWidth = $avtarInfo[0];
+            $avtarHeight = $avtarInfo[1];
+            Image::make($finalAvatar)->resize(400, 400)->save( public_path('/uploads/avatars/' . $finalAvatar ) );
+
+            $user = Auth::user();
+            $user->avatar = $finalAvatar;
+            $user->save();
+        
+
+        return redirect()->route('profile');
+
     }
 
     /**

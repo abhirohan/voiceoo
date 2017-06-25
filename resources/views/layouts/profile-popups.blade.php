@@ -7,23 +7,42 @@
 		</a>
 
 		<div class="ui-block-title">
-			<h6 class="title">Update Header Photo</h6>
+			<h6 class="title">Update Avatar</h6>
 		</div>
 
-		<a href="#" class="upload-photo-item">
-			<svg class="olymp-computer-icon"><use xlink:href="icons/icons.svg#olymp-computer-icon"></use></svg>
+		<span class="upload-photo-item" id="avatar-upload">
+			<div class="row">
+	  		<div class="col-md-6 text-center">
+				<div id="upload-demo" style="width:350px"></div>
+	  		</div>
+	  		<div class="col-md-6" style="padding-top:30px;">
+				<strong>Select Image:</strong>
+				<br/>
+				<form enctype="multipart/form-data" id="avatar-form" method="POST">
+				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden;">
+				<button class="btn btn-success upload-result">Upload Image</button>
+				</form>
+				<br/>
+	  		</div>
+	  	</div>
+			
+		</span>
+		<form enctype="multipart/form-data" id="avatar-form" action="{{ route('avtarupload')}}" method="POST">
+				{{ csrf_field() }}
+				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="opacity: 0;">
+		</form>
+		<form action="{{ route('avtarupload') }}" id="formavatar" method="post">
+			{{ csrf_field() }}
+			<input type="hidden" id="avatarimagebase64" name="imagebase64">
+		</form>
 
-			<h6>Upload Photo</h6>
-			<span>Browse your computer.</span>
-		</a>
-
-		<a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
+		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
 
 			<svg class="olymp-photos-icon"><use xlink:href="icons/icons.svg#olymp-photos-icon"></use></svg>
 
 			<h6>Choose from My Photos</h6>
 			<span>Choose from your uploaded photos</span>
-		</a>
+		</a> --}}
 	</div>
 </div>
 

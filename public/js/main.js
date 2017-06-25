@@ -542,3 +542,61 @@ function workClone() {
     morework.appendChild(desccln);
 }
 
+//Upload Avatar
+
+    /*$('#avatar-upload').click(function(e){
+        e.preventBubble=true;
+        $('#user-avatar').click();
+        return false;
+
+    });
+    $('#user-avatar').change(function(){
+        $('#avatar-form').submit();
+    });*/
+
+    $uploadCrop = $('#upload-demo').croppie({
+
+        enableExif: true,
+        viewport: {
+            width: 300,
+            height: 300,
+            type: 'circle'
+        },
+        boundary: {
+            width: 400,
+            height: 400
+        }
+});
+
+
+$('#user-avatar').on('change', function () { 
+    var reader = new FileReader();
+    reader.onload = function (e) {
+
+        $uploadCrop.croppie('bind', {
+
+            url: e.target.result
+
+        }).then(function(){
+
+            console.log('jQuery bind complete');
+
+        });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+$('.upload-result').on('click', function (ev) {
+
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $('#avatarimagebase64').val(resp);
+        $('#formavatar').submit();
+    });
+});
+
+
+
+

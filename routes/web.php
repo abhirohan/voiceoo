@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('/setting/changepassword', 'SettingpageController@changePassword')->name('changePasswordSetting');
 	Route::get('/setting/hobbies', 'SettingpageController@hobbies')->name('hobbiesSetting');
 	Route::get('/setting/education', 'SettingpageController@education')->name('educationSetting');
+	Route::post('/avataruplaod/', 'UserController@uploadAvatar')->name('avtarupload');
 
 	Route::get('/setting/notification', 'SettingpageController@notification')->name('notificationSetting');
 	Route::get('/setting/followrequest', 'SettingpageController@followrequest')->name('followrequestSetting');
