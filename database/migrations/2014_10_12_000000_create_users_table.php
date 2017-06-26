@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('display_name')->nullable();
-            $table->string('avatar',255)->nullable();
+            $table->string('tiny_status')->default('Feeling awsome today.');
+            $table->string('avatar',255)->default('default-avatar.png');
             $table->string('dob');
             $table->integer('age')->nullable();
             $table->integer('total_notes');
@@ -45,8 +46,7 @@ class CreateUsersTable extends Migration
             $table->string('marital_status')->nullable();
             $table->string('religious_belifs')->nullable();
             $table->string('political_incline')->nullable();
-            $table->string('cover')->nullable();
-            $table->string('cover_position')->nullable();
+            $table->string('cover')->default('default-cover.jpg');
             $table->integer('total_notes_likes'); 
             $table->integer('total_notes_comment');
             $table->integer('total_notes_views'); 

@@ -350,7 +350,7 @@
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" src="{{ route('basepath') }}/img/author-page.jpg" class="avatar">
+					<img alt="{{ $userData->first_name  }} {{ $userData->last_name  }}" src="/uploads/avatars/{{ $userData->avatar }}" class="avatar header-avtar">
 					<span class="icon-status online"></span>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -367,13 +367,13 @@
 										<span>Profile Settings</span>
 									</a>
 								</li>
-								<li>
+								{{-- <li>
 									<a href="36-FavPage-SettingsAndCreatePopup.html">
 										<svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right" title="" data-original-title="FAV PAGE"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-star-icon"></use></svg>
 
 										<span>Create Fav Page</span>
 									</a>
-								</li>
+								</li> --}}
 								<li>
 									<a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -388,7 +388,7 @@
 								</li>
 							</ul>
 
-							<div class="ui-block-title ui-block-title-small">
+							{{-- <div class="ui-block-title ui-block-title-small">
 								<h6 class="title">Chat Settings</h6>
 							</div>
 
@@ -418,16 +418,16 @@
 										<span>Invisible</span>
 									</a>
 								</li>
-							</ul>
+							</ul> --}}
 
 							<div class="ui-block-title ui-block-title-small">
 								<h6 class="title">Custom Status</h6>
 							</div>
 
-							<form class="form-group with-button custom-status">
-								<input class="form-control" placeholder="" type="text" value="Space Cowboy">
-
-								<button class="bg-purple">
+							<form class="form-group with-button custom-status" method="POST" action="{{ route('tinyStatusUplaod') }}">
+								{{ csrf_field() }}
+								<input class="form-control" name="tiny_status" placeholder="" type="text" maxlength="27" value="Feeling awsome today.">
+								<button  type="submit" class="bg-purple">
 									<svg class="olymp-check-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-check-icon"></use></svg>
 								</button>
 							</form>
@@ -464,9 +464,9 @@
 				</div>
 				<a href="{{ route('profile') }}" class="author-name fn">
 					<div class="author-title">
-						James Spiegel <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+						{{ $userData->first_name  }} {{ $userData->last_name  }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
-					<span class="author-subtitle">SPACE COWBOY</span>
+					<span class="author-subtitle">{{ $userData->tiny_status  }}</span>
 				</a>
 			</div>
 

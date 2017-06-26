@@ -2232,6 +2232,9 @@ body.overlay-enable:before {
 .update-header-photo {
   width: 770px; }
 
+  .update-cover-photo {
+  width: 100%; }
+
 .upload-photo-item {
   display: inline-block;
   vertical-align: middle;
@@ -5303,4 +5306,10 @@ ol ol li {
     width: 100%; }
   .col-4-width {
     width: 100%; } }
+
+    /*----------_Changed By Abhishek Bhardwaj -------------------*/
+    .header-avtar{
+      width:36px;
+      height:36px;
+    }
 

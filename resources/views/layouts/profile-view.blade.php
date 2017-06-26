@@ -6,7 +6,7 @@
 			<div class="ui-block">
 				<div class="top-header">
 					<div class="top-header-thumb">
-						<img src="{{ route('basepath') }}/img/top-header1.jpg" alt="nature">
+						<img src="/uploads/covers/{{ $userData->cover }}" alt="nature">
 					</div>
 					<div class="profile-section">
 						<div class="row">
@@ -62,20 +62,20 @@
 
 								<ul class="more-dropdown more-with-triangle triangle-bottom-right">
 									<li>
-										<a href="#" data-toggle="modal" data-target="#update-header-photo">Update Profile Photo</a>
+										<a href="#" data-toggle="modal" data-target="#update-avtar-photo">Update Profile Photo</a>
 									</li>
 									<li>
 										<a href="#" data-toggle="modal" data-target="#update-header-photo">Update Header Photo</a>
 									</li>
 									<li>
-										<a href="29-YourAccount-AccountSettings.html">Account Settings</a>
+										<a href="{{ route('accountSetting') }}">Account Settings</a>
 									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="top-header-author">
-						<a href="02-ProfilePage.html" class="author-thumb">
+						<a href="{{ route('profile') }}" class="author-thumb">
 							<img src="/uploads/avatars/{{ $userData->avatar }}" alt="{{ $userData->first_name  }} {{ $userData->last_name  }}" style="width:128px; height:128px;">
 						</a>
 						<div class="author-content">

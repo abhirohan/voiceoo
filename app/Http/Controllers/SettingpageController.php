@@ -43,7 +43,9 @@ class SettingpageController extends Controller
         $userDetails         = User::find($currentLoggedInUser);
         $userEducation       = Education::where('user_id',$currentLoggedInUser)->get();
         $userWork            = Job::where('user_id',$currentLoggedInUser)->get();
-        return view('settingpages.education',compact('userDetails','userEducation','userWork'));
+        $eduCount            = $userEducation->count();
+        $jobCount            = $userWork->count();
+        return view('settingpages.education',compact('userDetails','userEducation','userWork','eduCount','jobCount'));
 
     }
 

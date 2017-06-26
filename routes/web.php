@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('/setting/hobbies', 'SettingpageController@hobbies')->name('hobbiesSetting');
 	Route::get('/setting/education', 'SettingpageController@education')->name('educationSetting');
 	Route::post('/avataruplaod/', 'UserController@uploadAvatar')->name('avtarupload');
+	Route::post('/coveruplaod/', 'UserController@uploadCover')->name('coverupload');
+	Route::post('/tinystatus/', 'UserController@uploadTinyStatus')->name('tinyStatusUplaod');
 
 	Route::get('/setting/notification', 'SettingpageController@notification')->name('notificationSetting');
 	Route::get('/setting/followrequest', 'SettingpageController@followrequest')->name('followrequestSetting');

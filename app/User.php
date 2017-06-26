@@ -28,7 +28,6 @@ class User extends Authenticatable
                             'total_notes_likes',
                             'total_notes_comment',
                             'total_notes_views',
-                            'joined',
                             'ip_address'
     ];
 

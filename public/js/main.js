@@ -543,24 +543,12 @@ function workClone() {
 }
 
 //Upload Avatar
-
-    /*$('#avatar-upload').click(function(e){
-        e.preventBubble=true;
-        $('#user-avatar').click();
-        return false;
-
-    });
-    $('#user-avatar').change(function(){
-        $('#avatar-form').submit();
-    });*/
-
-    $uploadCrop = $('#upload-demo').croppie({
+    $uploadCropAvatar = $('#upload-demo').croppie({
 
         enableExif: true,
         viewport: {
             width: 300,
             height: 300,
-            type: 'circle'
         },
         boundary: {
             width: 400,
@@ -570,6 +558,52 @@ function workClone() {
 
 
 $('#user-avatar').on('change', function () { 
+    var reader = new FileReader();
+    reader.onload = function (e) {
+
+        $uploadCropAvatar.croppie('bind', {
+
+            url: e.target.result
+
+        }).then(function(){
+
+            console.log('jQuery bind complete');
+
+        });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+$('.upload-result').on('click', function (ev) {
+
+    $uploadCropAvatar.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $('#avatarimagebase64').val(resp);
+        $('#formavatar').submit();
+    });
+});
+
+
+
+
+//Upload header Cover
+    $uploadCrop = $('#upload-header-cover').croppie({
+
+        enableExif: true,
+        viewport: {
+            width: 1100,
+            height: 400,
+        },
+        boundary: {
+            width: 1150,
+            height: 450
+        }
+});
+
+
+$('#user-header').on('change', function () { 
     var reader = new FileReader();
     reader.onload = function (e) {
 
@@ -586,14 +620,14 @@ $('#user-avatar').on('change', function () {
     reader.readAsDataURL(this.files[0]);
 });
 
-$('.upload-result').on('click', function (ev) {
+$('.upload-cover-result').on('click', function (ev) {
 
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
     }).then(function (resp) {
-        $('#avatarimagebase64').val(resp);
-        $('#formavatar').submit();
+        $('#coverimagebase64').val(resp);
+        $('#formcover').submit();
     });
 });
 

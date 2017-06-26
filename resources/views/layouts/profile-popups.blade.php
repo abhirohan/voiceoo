@@ -1,32 +1,56 @@
-<!-- Window-popup Update Header Photo -->
+<!-- Window-popup Update Avatar Photo -->
 
-<div class="modal fade" id="update-header-photo">
+<div class="modal fade" id="update-avtar-photo">
 	<div class="modal-dialog ui-block window-popup update-header-photo">
 		<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-			<svg class="olymp-close-icon"><use xlink:href="icons/icons.svg#olymp-close-icon"></use></svg>
+			<svg class="olymp-close-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-close-icon"></use></svg>
 		</a>
 
 		<div class="ui-block-title">
-			<h6 class="title">Update Avatar</h6>
+			<h6 class="title">Update your avatar</h6>
 		</div>
 
-		<span class="upload-photo-item" id="avatar-upload">
-			<div class="row">
-	  		<div class="col-md-6 text-center">
-				<div id="upload-demo" style="width:350px"></div>
-	  		</div>
-	  		<div class="col-md-6" style="padding-top:30px;">
-				<strong>Select Image:</strong>
-				<br/>
-				<form enctype="multipart/form-data" id="avatar-form" method="POST">
-				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden;">
-				<button class="btn btn-success upload-result">Upload Image</button>
-				</form>
-				<br/>
-	  		</div>
-	  	</div>
-			
+		<span class="upload-photo-item" onClick="$('#user-avatar').click();">
+			<svg class="olymp-computer-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-computer-icon"></use></svg>
+
+			<h6>Upload Photo</h6>
+			<span>Browse your system.</span>
 		</span>
+		<form enctype="multipart/form-data" id="avatar-form" method="POST">
+				<input data-toggle="modal" data-target="#crop-section-avtar" type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
+		</form>
+
+		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
+
+			<svg class="olymp-photos-icon"><use xlink:href="icons/icons.svg#olymp-photos-icon"></use></svg>
+
+			<h6>Choose from My Photos</h6>
+			<span>Choose from your uploaded photos</span>
+		</a> --}}
+	</div>
+</div>
+
+
+<!-- ... end Window-popup Update Avatar Photo -->
+
+<!-- Window-popup Crop Section Avatar -->
+
+<div class="modal fade" id="crop-section-avtar">
+	<div class="modal-dialog ui-block window-popup update-header-photo">
+		
+
+		<div class="ui-block-title">
+			<h6 class="title">Crop the Image</h6>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<span class="upload-photo-item" id="avatar-upload">
+					<div id="upload-demo" style="width:350px; margin:0 auto;"></div>
+					<button class="btn btn-success upload-result">Select Image</button>
+				</span>
+			</div>
+		</div>
+		
 		<form enctype="multipart/form-data" id="avatar-form" action="{{ route('avtarupload')}}" method="POST">
 				{{ csrf_field() }}
 				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="opacity: 0;">
@@ -34,6 +58,31 @@
 		<form action="{{ route('avtarupload') }}" id="formavatar" method="post">
 			{{ csrf_field() }}
 			<input type="hidden" id="avatarimagebase64" name="imagebase64">
+		</form>
+	</div>
+</div>
+
+
+<!-- Window-popup Update Header Photo -->
+
+<div class="modal fade" id="update-header-photo">
+	<div class="modal-dialog ui-block window-popup update-header-photo">
+		<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+			<svg class="olymp-close-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-close-icon"></use></svg>
+		</a>
+
+		<div class="ui-block-title">
+			<h6 class="title">Update Header Photo</h6>
+		</div>
+
+		<span class="upload-photo-item" onClick="$('#user-header').click();">
+			<svg class="olymp-computer-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-computer-icon"></use></svg>
+
+			<h6>Upload Cover Pic</h6>
+			<span>Browse your system.</span>
+		</span>
+		<form enctype="multipart/form-data" id="header-form" method="POST">
+				<input data-toggle="modal" data-target="#crop-section-header" type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
 		</form>
 
 		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
@@ -49,6 +98,38 @@
 
 <!-- ... end Window-popup Update Header Photo -->
 
+<!-- Window-popup Crop Section header -->
+
+<div class="modal fade" id="crop-section-header">
+	<div class="modal-dialog ui-block window-popup update-cover-photo">
+		
+
+		<div class="ui-block-title">
+			<h6 class="title">Crop the Image</h6>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<span class="upload-photo-item" id="avatar-upload">
+					<div id="upload-header-cover" style="width:1150px;"></div>
+					<button class="btn btn-success upload-cover-result">Crop Cover</button>
+				</span>
+			</div>
+		</div>
+		
+		<form enctype="multipart/form-data" id="avatar-form" action="{{ route('coverupload')}}" method="POST">
+				{{ csrf_field() }}
+				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="opacity: 0;">
+		</form>
+		<form action="{{ route('coverupload') }}" id="formcover" method="post">
+			{{ csrf_field() }}
+			<input type="hidden" id="coverimagebase64" name="cover64">
+		</form>
+	</div>
+</div>
+
+
+
+<!-- ... end Window-popup Window-popup Crop Section Header  -->
 
 <!-- Window-popup Choose from my Photo -->
 <div class="modal fade" id="choose-from-my-photo">

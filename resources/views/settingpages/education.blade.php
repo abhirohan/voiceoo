@@ -19,35 +19,65 @@
 						<form action="{{ route('saveEducationSetting') }}" method="POST">
 							{{ csrf_field() }}
 							<div class="row edu-row">
-							@foreach($userEducation as $userEducations)
+							@if($eduCount == 0)
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="titleedu">
 									<div class="form-group label-floating">
-										<label class="control-label">Title or Place</label>
-										<input class="form-control" name="title[]" placeholder="" type="text" value="{{ $userEducations->title }}">
+										<label class="control-label">Education Title</label>
+										<input class="form-control" name="title[]" placeholder="" type="text" value="">
 									</div>
 								</div>
 
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="schooledu">
 									<div class="form-group label-floating">
 										<label class="control-label">School/University</label>
-										<input class="form-control" name="school[]" placeholder="" type="text" value="{{ $userEducations->school_university }}">
+										<input class="form-control" name="school[]" placeholder="" type="text" value="">
 									</div>
 								</div>
 								
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="periodedu">
 									<div class="form-group label-floating">
 										<label class="control-label">Period of Time</label>
-										<input class="form-control" name="period[]" placeholder="" type="text" value="{{ $userEducations->year }}">
+										<input class="form-control" name="period[]" placeholder="eg: 2001-2004" type="text" value="eg: 2001-2004">
 									</div>
 								</div>
 
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="descedu">
 									<div class="form-group label-floating">
 										<label class="control-label">Description</label>
-										<textarea class="form-control" name="description[]" placeholder="">{{ $userEducations->description }}</textarea>
+										<textarea class="form-control" name="description[]" placeholder=""></textarea>
 									</div>
 								</div>
-								@endforeach
+							@else
+								@foreach($userEducation as $userEducations)
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="titleedu">
+										<div class="form-group label-floating">
+											<label class="control-label">Title or Place</label>
+											<input class="form-control" name="title[]" placeholder="" type="text" value="{{ $userEducations->title }}">
+										</div>
+									</div>
+
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="schooledu">
+										<div class="form-group label-floating">
+											<label class="control-label">School/University</label>
+											<input class="form-control" name="school[]" placeholder="" type="text" value="{{ $userEducations->school_university }}">
+										</div>
+									</div>
+									
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="periodedu">
+										<div class="form-group label-floating">
+											<label class="control-label">Period of Time</label>
+											<input class="form-control" name="period[]" placeholder="" type="text" value="{{ $userEducations->year }}">
+										</div>
+									</div>
+
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="descedu">
+										<div class="form-group label-floating">
+											<label class="control-label">Description</label>
+											<textarea class="form-control" name="description[]" placeholder="">{{ $userEducations->description }}</textarea>
+										</div>
+									</div>
+									@endforeach
+								@endif
 								<div class="ui-block-content">
 									<div class="row" id="more-edu">
 									</div>
@@ -79,35 +109,65 @@
 						<form action="{{ route('saveWorkSetting') }}" method="POST">
 							{{ csrf_field() }}
 							<div class="row work-row">
-								@foreach($userWork as $userWorks)
+								@if($jobCount == 0)
 									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="titlework">
 										<div class="form-group label-floating">
 											<label class="control-label">Title or Place</label>
-											<input class="form-control" name="title[]" placeholder="" type="text" value="{{ $userWorks->title }}">
+											<input class="form-control" name="title[]" placeholder="" type="text" value="">
 										</div>
 									</div>
 
 									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="namework">
 										<div class="form-group label-floating">
 											<label class="control-label">Company/Organization</label>
-											<input class="form-control" name="company[]" placeholder="" type="text" value="{{ $userWorks->company }}">
+											<input class="form-control" name="company[]" placeholder="" type="text" value="">
 										</div>
 									</div>
 
 									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="periodwork">
 										<div class="form-group label-floating">
 											<label class="control-label">Period of Time</label>
-											<input class="form-control"  name="timeperiod[]" placeholder="" type="text" value="{{ $userWorks->year }}">
+											<input class="form-control"  name="timeperiod[]" placeholder="" type="text" value="">
 										</div>
 									</div>
 
 									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="descwork">
 										<div class="form-group label-floating">
 											<label class="control-label">Description</label>
-											<textarea class="form-control" name="description[]" placeholder="">{{ $userWorks->description }}</textarea>
+											<textarea class="form-control" name="description[]" placeholder=""></textarea>
 										</div>
 									</div>
-								@endforeach
+								@else
+									@foreach($userWork as $userWorks)
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="titlework">
+											<div class="form-group label-floating">
+												<label class="control-label">Title or Place</label>
+												<input class="form-control" name="title[]" placeholder="" type="text" value="{{ $userWorks->title }}">
+											</div>
+										</div>
+
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="namework">
+											<div class="form-group label-floating">
+												<label class="control-label">Company/Organization</label>
+												<input class="form-control" name="company[]" placeholder="" type="text" value="{{ $userWorks->company }}">
+											</div>
+										</div>
+
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="periodwork">
+											<div class="form-group label-floating">
+												<label class="control-label">Period of Time</label>
+												<input class="form-control"  name="timeperiod[]" placeholder="" type="text" value="{{ $userWorks->year }}">
+											</div>
+										</div>
+
+										<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" id="descwork">
+											<div class="form-group label-floating">
+												<label class="control-label">Description</label>
+												<textarea class="form-control" name="description[]" placeholder="">{{ $userWorks->description }}</textarea>
+											</div>
+										</div>
+									@endforeach
+								@endif
 
 								<div class="ui-block-content">
 									<div class="row" id="more-work">

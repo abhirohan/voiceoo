@@ -51,7 +51,7 @@ class UserController extends Controller
             $avtarInfo = getimagesize($finalAvatar);
             $avtarWidth = $avtarInfo[0];
             $avtarHeight = $avtarInfo[1];
-            Image::make($finalAvatar)->resize(400, 400)->save( public_path('/uploads/avatars/' . $finalAvatar ) );
+            Image::make($finalAvatar)->resize(400, 400)->save(public_path('/uploads/avatars/' . $finalAvatar));
 
             $user = Auth::user();
             $user->avatar = $finalAvatar;
@@ -60,6 +60,35 @@ class UserController extends Controller
 
         return redirect()->route('profile');
 
+    }
+
+    public function uploadCover(Request $request){
+            $cover = request('cover64');
+            list($type, $cover) = explode(';', $cover);
+            list(, $cover)      = explode(',', $cover);
+            $cover = base64_decode($cover);
+            $coverName = Auth::user()->first_name.".".time()."-".Auth::user()->id;
+            file_put_contents($coverName.'.jpg', $cover);
+            $finalcover = $coverName.'.jpg';
+            $coverInfo = getimagesize($finalcover);
+            $coverWidth = $coverInfo[0];
+            $coverHeight = $coverInfo[1];
+            Image::make($finalcover)->resize(1100, 400)->save(public_path('/uploads/covers/' . $finalcover));
+
+            $user = Auth::user();
+            $user->cover = $finalcover;
+            $user->save();
+        
+
+        return redirect()->route('profile');
+
+    }
+
+    public function uploadTinyStatus(Request $request){
+        $currentLoggedInUser  = Auth::User();
+        $currentLoggedInUser->tiny_status = request('tiny_status');
+        $currentLoggedInUser->save();
+        return redirect()->route('profile');
     }
 
     /**

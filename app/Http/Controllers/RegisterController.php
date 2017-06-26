@@ -74,7 +74,6 @@ class RegisterController extends Controller
                                             'total_notes_likes'=> '0',
                                             'total_notes_comment'=> '0',
                                             'total_notes_views'=> '0',
-                                            'joined'   => Carbon::now(),
                                             'ip_address' => $ip_address
                                         ]
                                 
@@ -87,7 +86,7 @@ class RegisterController extends Controller
 
             if($interestEntry && $socialEntry ){
                 \Session::flash('regmessage','Welcome on board');
-                return redirect('login'); 
+                return redirect()->route('basepath'); 
             }
         }
     }
