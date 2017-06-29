@@ -79,7 +79,7 @@
 							<img src="/uploads/avatars/{{ $userData->avatar }}" alt="{{ $userData->first_name  }} {{ $userData->last_name  }}" style="width:128px; height:128px;">
 						</a>
 						<div class="author-content">
-							<a href="/profile" class="h4 author-name">{{ $userData->first_name  }} {{ $userData->last_name  }}</a>
+							<a href="/profile" class="h4 author-name">{{ ucfirst($userData->first_name)  }} {{ ucfirst($userData->last_name)  }}</a>
 							<div class="country">{{ $userData->city  }}, {{ $userData->state  }} {{ $userData->country  }}</div>
 						</div>
 					</div>

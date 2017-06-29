@@ -17,16 +17,9 @@
 			<span>Browse your system.</span>
 		</span>
 		<form enctype="multipart/form-data" id="avatar-form" method="POST">
-				<input data-toggle="modal" data-target="#crop-section-avtar" type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
+				<input  type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
 		</form>
-
-		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-			<svg class="olymp-photos-icon"><use xlink:href="icons/icons.svg#olymp-photos-icon"></use></svg>
-
-			<h6>Choose from My Photos</h6>
-			<span>Choose from your uploaded photos</span>
-		</a> --}}
+		<span data-toggle="modal" data-target="#crop-section-avtar" id="hit-avatar-change"></span>
 	</div>
 </div>
 
@@ -62,6 +55,7 @@
 	</div>
 </div>
 
+<!-- Window-popup Crop Section Avatar End -->
 
 <!-- Window-popup Update Header Photo -->
 
@@ -82,16 +76,10 @@
 			<span>Browse your system.</span>
 		</span>
 		<form enctype="multipart/form-data" id="header-form" method="POST">
-				<input data-toggle="modal" data-target="#crop-section-header" type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
+				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
 		</form>
+		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 
-		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-			<svg class="olymp-photos-icon"><use xlink:href="icons/icons.svg#olymp-photos-icon"></use></svg>
-
-			<h6>Choose from My Photos</h6>
-			<span>Choose from your uploaded photos</span>
-		</a> --}}
 	</div>
 </div>
 
@@ -109,10 +97,14 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<span class="upload-photo-item" id="avatar-upload">
+				{{--<span class="upload-photo-item" id="avatar-upload">
 					<div id="upload-header-cover" style="width:1150px;"></div>
 					<button class="btn btn-success upload-cover-result">Crop Cover</button>
-				</span>
+				</span> --}}
+				<div class="image-wrapper">
+					<img id="header-to-crop" src="" alt="your image" />
+					<button class="btn btn-success upload-cover-result">Crop Cover</button>
+				</div>
 			</div>
 		</div>
 		

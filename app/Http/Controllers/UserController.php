@@ -24,11 +24,12 @@ class UserController extends Controller
     public function index(Request $request, $id)
     {
         $userData       = User::find($id);
+        $userDetails       = Auth::User();
         $userEducations = Education::where('user_id',$id)->get();
         $userInterests  = Interest::where('user_id',$id)->get();
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
-        return view('profile',compact('userData','userEducations','userInterests','userJobs','userSocials'));   
+        return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));   
     }
 
     public function aboutIndex(Request $request, $id){
