@@ -1,7 +1,5 @@
-
 <!-- jQuery first, then Other JS. -->
 <script src="{{ route('basepath') }}/js/jquery-3.2.0.min.js"></script>
-<script src="{{ route('basepath') }}/js/croppie.js"></script>
 <!-- Js effects for material design. + Tooltips -->
 <script src="{{ route('basepath') }}/js/material.min.js"></script>
 <!-- Helper scripts (Tabs, Equal height, Scrollbar, etc) -->
@@ -18,6 +16,7 @@
 <script src="{{ route('basepath') }}/js/moment.min.js"></script>
 <script src="j{{ route('basepath') }}/js/daterangepicker.min.js"></script>
 <!-- Init functions -->
+<script src="{{ route('basepath') }}/js/rcrop.min.js"></script>
 <script src="{{ route('basepath') }}/js/main.js"></script>
 
 

@@ -350,7 +350,7 @@
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="{{ $userData->first_name  }} {{ $userData->last_name  }}" src="/uploads/avatars/{{ $userData->avatar }}" class="avatar header-avtar">
+					<img alt="{{ $userDetails->first_name  }} {{ $userDetails->last_name  }}" src="/uploads/avatars/{{ $userDetails->avatar }}" class="avatar header-avtar">
 					<span class="icon-status online"></span>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -464,9 +464,9 @@
 				</div>
 				<a href="{{ route('profile') }}" class="author-name fn">
 					<div class="author-title">
-						{{ $userData->first_name  }} {{ $userData->last_name  }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+						{{ $userDetails->first_name  }} {{ $userDetails->last_name  }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
-					<span class="author-subtitle">{{ $userData->tiny_status  }}</span>
+					<span class="author-subtitle">{{ $userDetails->tiny_status }}</span>
 				</a>
 			</div>
 

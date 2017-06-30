@@ -13,6 +13,7 @@ Use App\Job;
 use Session;
 class SettingpageController extends Controller
 {
+
     public function __construct(){
         $this->middleware('auth');
     }
@@ -24,11 +25,15 @@ class SettingpageController extends Controller
     }
     
     public function account(){
-        return view('settingpages.account');
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
+        return view('settingpages.account',compact('userDetails'));
     }
 
     public function changePassword(){
-        return view('settingpages.change-password');
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
+        return view('settingpages.change-password',compact('userDetails'));
     }
 
     public function hobbies(){
@@ -50,11 +55,15 @@ class SettingpageController extends Controller
     }
 
     public function notification(){
-        return view('settingpages.notification');
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
+        return view('settingpages.notification',compact('userDetails'));
     }
 
     public function followrequest(){
-        return view('settingpages.followrequest');
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
+        return view('settingpages.followrequest',compact('userDetails'));
     }
     //Save Setting
     public function storePersonal(Request $request){

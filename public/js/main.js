@@ -542,94 +542,100 @@ function workClone() {
     morework.appendChild(desccln);
 }
 
+//Loader
+window.onload=function(){
+        $('.loadermain').hide();
+
+}
 //Upload Avatar
-    $uploadCropAvatar = $('#upload-demo').croppie({
-
-        enableExif: true,
-        viewport: {
-            width: 300,
-            height: 300,
-        },
-        boundary: {
-            width: 400,
-            height: 400
-        }
-});
 
 
-$('#user-avatar').on('change', function () { 
-    var reader = new FileReader();
-    reader.onload = function (e) {
 
-        $uploadCropAvatar.croppie('bind', {
 
-            url: e.target.result
-
-        }).then(function(){
-
-            console.log('jQuery bind complete');
-
-        });
-    }
-    reader.readAsDataURL(this.files[0]);
-});
-
-$('.upload-result').on('click', function (ev) {
-
-    $uploadCropAvatar.croppie('result', {
-        type: 'canvas',
-        size: 'viewport'
-    }).then(function (resp) {
-        $('#avatarimagebase64').val(resp);
-        $('#formavatar').submit();
+/*--------------------Header Manipulation--------------------*/
+    $('#user-header').change(function(){
+        
+        return false;
     });
-});
+    function headerURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var img = new Image();
 
 
-
-
-//Upload header Cover
-    $uploadCrop = $('#upload-header-cover').croppie({
-
-        enableExif: true,
-        viewport: {
-            width: 1100,
-            height: 400,
-        },
-        boundary: {
-            width: 1150,
-            height: 450
+            reader.onload = function (e) {
+                var check = $('#header-to-crop').attr('src', e.target.result);
+                $('#header-to-crop').attr('src', e.target.result);  
+                    console.log($('img#header-to-crop').width());
+                
+            }  
+            
+            reader.readAsDataURL(input.files[0]);
         }
-});
-
-
-$('#user-header').on('change', function () { 
-    var reader = new FileReader();
-    reader.onload = function (e) {
-
-        $uploadCrop.croppie('bind', {
-
-            url: e.target.result
-
-        }).then(function(){
-
-            console.log('jQuery bind complete');
-
-        });
     }
-    reader.readAsDataURL(this.files[0]);
-});
-
-$('.upload-cover-result').on('click', function (ev) {
-
-    $uploadCrop.croppie('result', {
-        type: 'canvas',
-        size: 'viewport'
-    }).then(function (resp) {
-        $('#coverimagebase64').val(resp);
-        $('#formcover').submit();
+    $("#user-header").change(function(){
+        $('#hit-cover-change').click();
+             
+        //$('#page-loading').show();
+        headerURL(this);
+        setTimeout(function(){
+            $('#header-to-crop').rcrop({
+                minSize : [700,340],
+                maxSize : [1300,340],
+                grid : true
+            });
+        },500 );
     });
+
+    var header_to_crop = $('#header-to-crop'),
+    inputs = {
+        x : $('#cover-x'),
+        y : $('#cover-y'),
+        width : $('#cover-width'),
+        height : $('#cover-height')
+    },
+    fill = function(){
+        var values = header_to_crop.rcrop('getValues');
+        for(var coord in inputs){
+            inputs[coord].val(values[coord]);
+        }
+    };
+
+    // Fill inputs when Responsive Cropper is ready and when crop area is being resized or dragged 
+    header_to_crop.on('rcrop-change rcrop-ready', fill);
+    
+    $('.upload-cover-result').click(function(){
+        $('#header-form').submit();
+    });
+
+
+    /*--------------------Header Manipulation End--------------------*/
+    
+
+//Upload Note Featured
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#fetatured-upload').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#note-featured").change(function(){
+    $('.if-featured').show();
+    readURL(this);
 });
+$('.olymp-close-icon').click(function(){
+    $('.if-featured').hide();
+    $('#note-featured').val('');
+});
+
+    
 
 
 

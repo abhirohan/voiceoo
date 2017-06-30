@@ -17,16 +17,9 @@
 			<span>Browse your system.</span>
 		</span>
 		<form enctype="multipart/form-data" id="avatar-form" method="POST">
-				<input data-toggle="modal" data-target="#crop-section-avtar" type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
+				<input  type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
 		</form>
-
-		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-			<svg class="olymp-photos-icon"><use xlink:href="icons/icons.svg#olymp-photos-icon"></use></svg>
-
-			<h6>Choose from My Photos</h6>
-			<span>Choose from your uploaded photos</span>
-		</a> --}}
+		<span data-toggle="modal" data-target="#crop-section-avtar" id="hit-avatar-change"></span>
 	</div>
 </div>
 
@@ -62,6 +55,7 @@
 	</div>
 </div>
 
+<!-- Window-popup Crop Section Avatar End -->
 
 <!-- Window-popup Update Header Photo -->
 
@@ -81,17 +75,16 @@
 			<h6>Upload Cover Pic</h6>
 			<span>Browse your system.</span>
 		</span>
-		<form enctype="multipart/form-data" id="header-form" method="POST">
-				<input data-toggle="modal" data-target="#crop-section-header" type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
+		<form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}">
+				{{ csrf_field() }}
+				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
+				<input type="text" name="cover_width" id="cover-width">
+				<input type="text" name="cover_height" id="cover-height">
+				<input type="text" name="cover_x" id="cover-x">
+				<input type="text" name="cover_y" id="cover-y">
 		</form>
+		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 
-		{{-- <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-			<svg class="olymp-photos-icon"><use xlink:href="icons/icons.svg#olymp-photos-icon"></use></svg>
-
-			<h6>Choose from My Photos</h6>
-			<span>Choose from your uploaded photos</span>
-		</a> --}}
 	</div>
 </div>
 
@@ -109,21 +102,26 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<span class="upload-photo-item" id="avatar-upload">
-					<div id="upload-header-cover" style="width:1150px;"></div>
-					<button class="btn btn-success upload-cover-result">Crop Cover</button>
-				</span>
+				<div class="image-wrapper">
+					<img id="header-to-crop" src="" alt="your header image" />
+					{{-- <button class="btn btn-success ">Crop Cover</button> --}}
+				</div>
+			</div>
+			<div class="col-lg-12 col-sm-12 text-center">
+				<button class="btn btn-primary btn-md upload-cover-result">Crop
+					<div class="ripple-container"></div>
+				</button>
 			</div>
 		</div>
 		
-		<form enctype="multipart/form-data" id="avatar-form" action="{{ route('coverupload')}}" method="POST">
+		{{-- <form enctype="multipart/form-data" id="avatar-form" action="{{ route('coverupload')}}" method="POST">
 				{{ csrf_field() }}
 				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="opacity: 0;">
 		</form>
 		<form action="{{ route('coverupload') }}" id="formcover" method="post">
 			{{ csrf_field() }}
 			<input type="hidden" id="coverimagebase64" name="cover64">
-		</form>
+		</form> --}}
 	</div>
 </div>
 

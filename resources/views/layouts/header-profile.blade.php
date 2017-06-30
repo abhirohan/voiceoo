@@ -37,6 +37,7 @@
 
 	<!-- Lightbox popup script-->
 	<link rel="stylesheet" type="text/css" href="{{ route('basepath') }}/css/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="{{ route('basepath') }}/css/rcrop.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ route('basepath') }}/css/croppie.css">
 
 

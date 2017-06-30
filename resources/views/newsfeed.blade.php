@@ -1,7 +1,9 @@
 @extends('layout-newsfeed')
 @section('newsfeed-data')
-	<div class="header-spacer"></div>
-
+<div class="header-spacer"></div>
+	<main class="col-xl-6 push-xl-3 col-lg-12 push-lg-0 col-md-12 col-sm-12 col-xs-12">
+	@include('new-note')
+	</main>
 
 <div class="container">
 	<div class="row">

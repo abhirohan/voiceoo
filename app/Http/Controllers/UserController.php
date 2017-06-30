@@ -24,20 +24,31 @@ class UserController extends Controller
     public function index(Request $request, $id)
     {
         $userData       = User::find($id);
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
         $userEducations = Education::where('user_id',$id)->get();
         $userInterests  = Interest::where('user_id',$id)->get();
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
-        return view('profile',compact('userData','userEducations','userInterests','userJobs','userSocials'));   
+        return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));  
+
+    }
+
+    public function newsfeed(){
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
+        return view('newsfeed',compact('userDetails'));   
     }
 
     public function aboutIndex(Request $request, $id){
         $userData       = User::find($id);
+        $currentLoggedInUser = Auth::User()->id;
+        $userDetails = User::find($currentLoggedInUser);
         $userEducations = Education::where('user_id',$id)->get();
         $userInterests  = Interest::where('user_id',$id)->get();
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
-        return view('about',compact('userData','userEducations','userInterests','userJobs','userSocials'));
+        return view('about',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));
     }
 
     public function uploadAvatar(Request $request){
@@ -63,21 +74,20 @@ class UserController extends Controller
     }
 
     public function uploadCover(Request $request){
-            $cover = request('cover64');
-            list($type, $cover) = explode(';', $cover);
-            list(, $cover)      = explode(',', $cover);
-            $cover = base64_decode($cover);
-            $coverName = Auth::user()->first_name.".".time()."-".Auth::user()->id;
-            file_put_contents($coverName.'.jpg', $cover);
-            $finalcover = $coverName.'.jpg';
-            $coverInfo = getimagesize($finalcover);
-            $coverWidth = $coverInfo[0];
-            $coverHeight = $coverInfo[1];
-            Image::make($finalcover)->resize(1100, 400)->save(public_path('/uploads/covers/' . $finalcover));
+        //dd($request);
+        if($request->hasFile('user_header')){
+            $cover = $request->file('user_header');
+            $coverName = time() . '.' . $cover->getClientOriginalExtension();
+            $coverWidth  = request('cover_width');
+            $coverHeight = request('cover_height');
+            $coverX      = request('cover_x');
+            $coverY      = request('cover_y');
+            Image::make($cover)->crop($coverWidth, $coverHeight, $coverX, $coverY)->save(public_path('/uploads/covers/' . $coverName));
 
             $user = Auth::user();
-            $user->cover = $finalcover;
+            $user->cover = $coverName;
             $user->save();
+        }
         
 
         return redirect()->route('profile');

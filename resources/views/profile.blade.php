@@ -1,4 +1,4 @@
-@extends('layout-profile')
+ @extends('layout-profile')
 
 @section('profile-data')
 	<div class="header-spacer"></div>
@@ -16,6 +16,7 @@
 			<!-- Main Content -->
 
 			<div class="col-xl-6 push-xl-3 col-lg-12 push-lg-0 col-md-12 col-sm-12 col-xs-12">
+				
 				<div id="newsfeed-items-grid">
 
 					<div class="ui-block">
