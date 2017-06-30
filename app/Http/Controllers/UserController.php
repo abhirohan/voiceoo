@@ -24,17 +24,12 @@ class UserController extends Controller
     public function index(Request $request, $id)
     {
         $userData       = User::find($id);
-<<<<<<< HEAD
         $currentLoggedInUser = Auth::User()->id;
         $userDetails = User::find($currentLoggedInUser);
-=======
-        $userDetails       = Auth::User();
->>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
         $userEducations = Education::where('user_id',$id)->get();
         $userInterests  = Interest::where('user_id',$id)->get();
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
-<<<<<<< HEAD
         return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));  
 
     }
@@ -43,9 +38,6 @@ class UserController extends Controller
         $currentLoggedInUser = Auth::User()->id;
         $userDetails = User::find($currentLoggedInUser);
         return view('newsfeed',compact('userDetails'));   
-=======
-        return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));   
->>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
     }
 
     public function aboutIndex(Request $request, $id){
@@ -60,21 +52,20 @@ class UserController extends Controller
     }
 
     public function uploadAvatar(Request $request){
-            $avatar = request('imagebase64');
-            list($type, $avatar) = explode(';', $avatar);
-            list(, $avatar)      = explode(',', $avatar);
-            $avatar = base64_decode($avatar);
-            $avtarName = Auth::user()->first_name.".".time()."-".Auth::user()->id;
-            file_put_contents($avtarName.'.png', $avatar);
-            $finalAvatar = $avtarName.'.png';
-            $avtarInfo = getimagesize($finalAvatar);
-            $avtarWidth = $avtarInfo[0];
-            $avtarHeight = $avtarInfo[1];
-            Image::make($finalAvatar)->resize(400, 400)->save(public_path('/uploads/avatars/' . $finalAvatar));
+        // /dd($request);
+            if($request->hasFile('user_avatar')){
+            $avatar = $request->file('user_avatar');
+            $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
+            $avatarWidth  = request('avatar_width');
+            $avatarHeight = request('avatar_height');
+            $avatarX      = request('avatar_x');
+            $avatarY      = request('avatar_y');
+            Image::make($avatar)->crop($avatarWidth, $avatarHeight, $avatarX, $avatarY)->save(public_path('/uploads/avatars/' . $avatarName));
 
             $user = Auth::user();
-            $user->avatar = $finalAvatar;
+            $user->avatar = $avatarName;
             $user->save();
+        }
         
 
         return redirect()->route('profile');

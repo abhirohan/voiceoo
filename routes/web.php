@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('/setting/changepassword', 'SettingpageController@changePassword')->name('changePasswordSetting');
 	Route::get('/setting/hobbies', 'SettingpageController@hobbies')->name('hobbiesSetting');
 	Route::get('/setting/education', 'SettingpageController@education')->name('educationSetting');
-	Route::post('/avataruplaod/', 'UserController@uploadAvatar')->name('avtarupload');
+	Route::post('/avatarupload/', 'UserController@uploadAvatar')->name('avatarupload');
 	Route::post('/coverupload/', 'UserController@uploadCover')->name('coverupload');
 	Route::post('/tinystatus/', 'UserController@uploadTinyStatus')->name('tinyStatusUplaod');
 	Route::post('/note-upload/', 'PostnoteController@noteStore')->name('newnoteUplaod');

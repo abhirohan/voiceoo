@@ -1,10 +1,4 @@
-<div id="page-loading">
-  <div class="three-balls">
-    <div class="ball ball1"></div>
-    <div class="ball ball2"></div>
-    <div class="ball ball3"></div>
-  </div>
-</div>
+
 <!-- Header -->
 
 <header class="header" id="site-header">
@@ -470,15 +464,11 @@
 				</div>
 				<a href="{{ route('profile') }}" class="author-name fn">
 					<div class="author-title">
-<<<<<<< HEAD
-						{{ $userDetails->first_name  }} {{ $userDetails->last_name  }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-					</div>
-					<span class="author-subtitle">{{ $userDetails->tiny_status }}</span>
-=======
+
 						{{ ucfirst($userDetails->first_name)  }} {{ ucfirst($userDetails->last_name)  }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
 					<span class="author-subtitle">{{ ucfirst($userDetails->tiny_status)  }}</span>
->>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
+
 				</a>
 			</div>
 

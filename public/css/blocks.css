@@ -5313,25 +5313,25 @@ ol ol li {
       height:36px;
     }
      .image-wrapper{
-        max-width: 1368px;
+        max-width: 600px;
         min-width: 200px;
         margin: 0 auto;
     }
     .image-wrapper img{
        width: 100%
     }
-<<<<<<< HEAD
+
     .rcrop-wrapper .rcrop-outer {
       background: #000 !important;
     }
 
 
-=======
->>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
+
     /*------------------------Loader-----------------------*/
      #page-loading {
       position: fixed;
       top: 0;
+      display: none;
       left: 0;
       bottom: 0;
       right: 0;

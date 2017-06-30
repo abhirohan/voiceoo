@@ -1,23 +1,21 @@
-$(window).load(function(){
-    $('#page-loading').hide();
-});
+
 //Global var to avoid any conflicts
 var CRUMINA = {};
 
 (function ($) {
 
-	// USE STRICT
-	"use strict";
+    // USE STRICT
+    "use strict";
 
 
-	//----------------------------------------------------/
-	// Predefined Variables
-	//----------------------------------------------------/
-	var $window = $(window),
-		$document = $(document),
-		$body = $('body'),
-		swipers = {},
-		$progress_bar = $('.skills-item'),
+    //----------------------------------------------------/
+    // Predefined Variables
+    //----------------------------------------------------/
+    var $window = $(window),
+        $document = $(document),
+        $body = $('body'),
+        swipers = {},
+        $progress_bar = $('.skills-item'),
         $sidebar = $('.fixed-sidebar');
 
 
@@ -27,25 +25,25 @@ var CRUMINA = {};
      * Documentation about used plugin:
      * http://brm.io/jquery-match-height/
      * ---------------------------*/
-	CRUMINA.equalHeight = function () {
-		$('.js-equal-child').find('.theme-module').matchHeight({
-			property: 'min-height'
-		});
-	};
+    CRUMINA.equalHeight = function () {
+        $('.js-equal-child').find('.theme-module').matchHeight({
+            property: 'min-height'
+        });
+    };
 
 
-	CRUMINA.equalHeight = function () {
-		$('.js-equal-child').find('.theme-module').matchHeight({
-			property: 'min-height'
-		});
-	};
+    CRUMINA.equalHeight = function () {
+        $('.js-equal-child').find('.theme-module').matchHeight({
+            property: 'min-height'
+        });
+    };
 
-	/* -----------------------------
-	 * Top Search bar function
-	 * Script file: selectize.min.js
-	 * Documentation about used plugin:
-	 * https://github.com/selectize/selectize.js
-	 * ---------------------------*/
+    /* -----------------------------
+     * Top Search bar function
+     * Script file: selectize.min.js
+     * Documentation about used plugin:
+     * https://github.com/selectize/selectize.js
+     * ---------------------------*/
     CRUMINA.TopSearch = function () {
         $('.js-user-search').selectize({
             persist: false,
@@ -65,11 +63,11 @@ var CRUMINA = {};
                 option: function(item, escape) {
                     return '<div class="inline-items">' +
                         (item.image ? '<div class="author-thumb"><img src="' + escape(item.image) + '" alt="avatar"></div>' : '') +
-							'<div class="notification-event">' +
-                        		(item.name ? '<span class="h6 notification-friend"></a>' + escape(item.name) + '</span>' : '') +
-                        		(item.message ? '<span class="chat-message-item">' + escape(item.message) + '</span>' : '') +
-							'</div>'+
-                        	(item.icon ? '<span class="notification-icon"><svg class="' + escape(item.icon) + '"><use xlink:href="icons/icons.svg#' + escape(item.icon) + '"></use></svg></span>' : '') +
+                            '<div class="notification-event">' +
+                                (item.name ? '<span class="h6 notification-friend"></a>' + escape(item.name) + '</span>' : '') +
+                                (item.message ? '<span class="chat-message-item">' + escape(item.message) + '</span>' : '') +
+                            '</div>'+
+                            (item.icon ? '<span class="notification-icon"><svg class="' + escape(item.icon) + '"><use xlink:href="icons/icons.svg#' + escape(item.icon) + '"></use></svg></span>' : '') +
                         '</div>';
                 },
                 item: function(item, escape) {
@@ -213,75 +211,75 @@ var CRUMINA = {};
      * http://idangero.us/swiper/api/
      * ---------------------------*/
 
-	CRUMINA.initSwiper = function () {
-		var initIterator = 0;
-		var $breakPoints = false;
-		$('.swiper-container').each(function () {
+    CRUMINA.initSwiper = function () {
+        var initIterator = 0;
+        var $breakPoints = false;
+        $('.swiper-container').each(function () {
 
-			var $t = $(this);
-			var index = 'swiper-unique-id-' + initIterator;
+            var $t = $(this);
+            var index = 'swiper-unique-id-' + initIterator;
 
-			$t.addClass('swiper-' + index + ' initialized').attr('id', index);
-			$t.find('.swiper-pagination').addClass('pagination-' + index);
+            $t.addClass('swiper-' + index + ' initialized').attr('id', index);
+            $t.find('.swiper-pagination').addClass('pagination-' + index);
 
-			var $effect = ($t.data('effect')) ? $t.data('effect') : 'slide',
-				$crossfade = ($t.data('crossfade')) ? $t.data('crossfade') : true,
-				$loop = ($t.data('loop') == false) ? $t.data('loop') : true,
-				$showItems = ($t.data('show-items')) ? $t.data('show-items') : 1,
-				$scrollItems = ($t.data('scroll-items')) ? $t.data('scroll-items') : 1,
-				$scrollDirection = ($t.data('direction')) ? $t.data('direction') : 'horizontal',
-				$mouseScroll = ($t.data('mouse-scroll')) ? $t.data('mouse-scroll') : false,
-				$autoplay = ($t.data('autoplay')) ? parseInt($t.data('autoplay'), 10) : 0,
-				$autoheight = ($t.hasClass('auto-height')) ? true: false,
-				$slidesSpace = ($showItems > 1) ? 20 : 0;
+            var $effect = ($t.data('effect')) ? $t.data('effect') : 'slide',
+                $crossfade = ($t.data('crossfade')) ? $t.data('crossfade') : true,
+                $loop = ($t.data('loop') == false) ? $t.data('loop') : true,
+                $showItems = ($t.data('show-items')) ? $t.data('show-items') : 1,
+                $scrollItems = ($t.data('scroll-items')) ? $t.data('scroll-items') : 1,
+                $scrollDirection = ($t.data('direction')) ? $t.data('direction') : 'horizontal',
+                $mouseScroll = ($t.data('mouse-scroll')) ? $t.data('mouse-scroll') : false,
+                $autoplay = ($t.data('autoplay')) ? parseInt($t.data('autoplay'), 10) : 0,
+                $autoheight = ($t.hasClass('auto-height')) ? true: false,
+                $slidesSpace = ($showItems > 1) ? 20 : 0;
 
-			if ($showItems > 1) {
-				$breakPoints = {
-					480: {
-						slidesPerView: 1,
-						slidesPerGroup: 1
-					},
-					768: {
-						slidesPerView: 2,
-						slidesPerGroup: 2
-					}
-				}
-			}
+            if ($showItems > 1) {
+                $breakPoints = {
+                    480: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2
+                    }
+                }
+            }
 
-			swipers['swiper-' + index] = new Swiper('.swiper-' + index, {
-				pagination: '.pagination-' + index,
-				paginationClickable: true,
-				direction: $scrollDirection,
-				mousewheelControl: $mouseScroll,
-				mousewheelReleaseOnEdges: $mouseScroll,
-				slidesPerView: $showItems,
-				slidesPerGroup: $scrollItems,
-				spaceBetween: $slidesSpace,
-				keyboardControl: true,
-				setWrapperSize: true,
-				preloadImages: true,
-				updateOnImagesReady: true,
-				autoplay: $autoplay,
-				autoHeight: $autoheight,
-				loop: $loop,
-				breakpoints: $breakPoints,
-				effect: $effect,
-				fade: {
-					crossFade: $crossfade
-				},
-				parallax: true,
-				onSlideChangeStart: function (swiper) {
-				    var sliderThumbs = $t.siblings('.slider-slides');
-					if (sliderThumbs.length) {
+            swipers['swiper-' + index] = new Swiper('.swiper-' + index, {
+                pagination: '.pagination-' + index,
+                paginationClickable: true,
+                direction: $scrollDirection,
+                mousewheelControl: $mouseScroll,
+                mousewheelReleaseOnEdges: $mouseScroll,
+                slidesPerView: $showItems,
+                slidesPerGroup: $scrollItems,
+                spaceBetween: $slidesSpace,
+                keyboardControl: true,
+                setWrapperSize: true,
+                preloadImages: true,
+                updateOnImagesReady: true,
+                autoplay: $autoplay,
+                autoHeight: $autoheight,
+                loop: $loop,
+                breakpoints: $breakPoints,
+                effect: $effect,
+                fade: {
+                    crossFade: $crossfade
+                },
+                parallax: true,
+                onSlideChangeStart: function (swiper) {
+                    var sliderThumbs = $t.siblings('.slider-slides');
+                    if (sliderThumbs.length) {
                         sliderThumbs.find('.slide-active').removeClass('slide-active');
-						var realIndex = swiper.slides.eq(swiper.activeIndex).attr('data-swiper-slide-index');
+                        var realIndex = swiper.slides.eq(swiper.activeIndex).attr('data-swiper-slide-index');
                         sliderThumbs.find('.slides-item').eq(realIndex).addClass('slide-active');
-					}
-				}
-			});
-			initIterator++;
-		});
-		
+                    }
+                }
+            });
+            initIterator++;
+        });
+        
 
         //swiper arrows
         $('.btn-prev').on('click', function () {
@@ -293,7 +291,7 @@ var CRUMINA = {};
             var sliderID = $(this).closest('.slider-slides').siblings('.swiper-container').attr('id');
             swipers['swiper-' + sliderID].slideNext();
         });
-		
+        
         //swiper arrows
         $('.btn-prev-without').on('click', function () {
             var sliderID = $(this).closest('.swiper-container').attr('id');
@@ -304,8 +302,8 @@ var CRUMINA = {};
             var sliderID = $(this).closest('.swiper-container').attr('id');
             swipers['swiper-' + sliderID].slideNext();
         });
-		
-		
+        
+        
         // Click on thumbs
         $('.slider-slides .slides-item').on('click', function () {
             if ($(this).hasClass('slide-active')) return false;
@@ -317,12 +315,12 @@ var CRUMINA = {};
 
             return false;
         });
-	};
+    };
 
-	
-	/* -----------------------
-	 * Progress bars Animation
-	 * --------------------- */
+    
+    /* -----------------------
+     * Progress bars Animation
+     * --------------------- */
     CRUMINA.progresBars = function () {
         $progress_bar.appear({force_process: true});
         $progress_bar.on('appear', function () {
@@ -336,43 +334,43 @@ var CRUMINA = {};
 
 
 
-	/* -----------------------------
-	 * Isotope sorting
-	 * ---------------------------*/
+    /* -----------------------------
+     * Isotope sorting
+     * ---------------------------*/
 
-	CRUMINA.IsotopeSort = function () {
-		var $container = $('.sorting-container');
-		$container.each(function () {
-			var $current = $(this);
-			var layout = ($current.data('layout').length) ? $current.data('layout') : 'masonry';
-			$current.isotope({
-				itemSelector: '.sorting-item',
-				layoutMode: layout,
-				percentPosition: true
-			});
+    CRUMINA.IsotopeSort = function () {
+        var $container = $('.sorting-container');
+        $container.each(function () {
+            var $current = $(this);
+            var layout = ($current.data('layout').length) ? $current.data('layout') : 'masonry';
+            $current.isotope({
+                itemSelector: '.sorting-item',
+                layoutMode: layout,
+                percentPosition: true
+            });
 
-			$current.imagesLoaded().progress(function () {
-				$current.isotope('layout');
-			});
+            $current.imagesLoaded().progress(function () {
+                $current.isotope('layout');
+            });
 
-			var $sorting_buttons = $current.siblings('.sorting-menu').find('li');
+            var $sorting_buttons = $current.siblings('.sorting-menu').find('li');
 
-			$sorting_buttons.on('click', function () {
-				if ($(this).hasClass('active')) return false;
-				$(this).parent().find('.active').removeClass('active');
-				$(this).addClass('active');
-				var filterValue = $(this).data('filter');
-				if (typeof filterValue != "undefined") {
-					$current.isotope({filter: filterValue});
-					return false;
-				}
-			});
-		});
-	};
+            $sorting_buttons.on('click', function () {
+                if ($(this).hasClass('active')) return false;
+                $(this).parent().find('.active').removeClass('active');
+                $(this).addClass('active');
+                var filterValue = $(this).data('filter');
+                if (typeof filterValue != "undefined") {
+                    $current.isotope({filter: filterValue});
+                    return false;
+                }
+            });
+        });
+    };
 
-	/* -----------------------------
-	 * Toggle functions
-	 * ---------------------------*/
+    /* -----------------------------
+     * Toggle functions
+     * ---------------------------*/
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         var target = $(e.target).attr("href"); // activated tab
@@ -381,14 +379,14 @@ var CRUMINA = {};
         }
     });
 
-	// Toggle aside panels
-	$(".js-sidebar-open").on('click', function () {
+    // Toggle aside panels
+    $(".js-sidebar-open").on('click', function () {
         $(this).toggleClass('active');
         $(this).closest($sidebar).toggleClass('open');
         return false;
     } );
 
-	// Close on "Esc" click
+    // Close on "Esc" click
     $window.keydown(function (eventObject) {
         if (eventObject.which == 27 && $sidebar.is(':visible')) {
             $sidebar.removeClass('open');
@@ -421,9 +419,9 @@ var CRUMINA = {};
         if (eventObject.which == 27) {
             $popup.removeClass('open');
             $body.removeClass('overlay-enable');
-			$('.profile-menu').removeClass('expanded-menu');
-			$('.popup-chat-responsive').removeClass('open-chat');
-			$('.profile-settings-responsive').removeClass('open');
+            $('.profile-menu').removeClass('expanded-menu');
+            $('.popup-chat-responsive').removeClass('open-chat');
+            $('.profile-settings-responsive').removeClass('open');
         }
     });
 
@@ -432,7 +430,7 @@ var CRUMINA = {};
         if (!$(event.target).closest($popup).length) {
             $popup.removeClass('open');
             $body.removeClass('overlay-enable');
-			$('.profile-menu').removeClass('expanded-menu');
+            $('.profile-menu').removeClass('expanded-menu');
         }
     });
 
@@ -453,39 +451,39 @@ var CRUMINA = {};
         return false
     });
 
-	$(".profile-settings-open").on('click', function () {
-		$('.profile-settings-responsive').toggleClass('open');
-		return false
-	});
+    $(".profile-settings-open").on('click', function () {
+        $('.profile-settings-responsive').toggleClass('open');
+        return false
+    });
 
     $(".js-open-choose-from-my-photo").on('click', function () {
         $('.choose-from-my-photo').addClass('open');
         $('.update-header-photo').removeClass('open');
     });
 
-	$(".js-expanded-menu").on('click', function () {
-		$('.profile-menu').toggleClass('expanded-menu');
-		return false
-	});
+    $(".js-expanded-menu").on('click', function () {
+        $('.profile-menu').toggleClass('expanded-menu');
+        return false
+    });
 
-	$(".js-chat-open").on('click', function () {
-		$('.popup-chat-responsive').toggleClass('open-chat');
-		return false
-	});
+    $(".js-chat-open").on('click', function () {
+        $('.popup-chat-responsive').toggleClass('open-chat');
+        return false
+    });
     $(".js-chat-close").on('click', function () {
         $('.popup-chat-responsive').removeClass('open-chat');
         return false
     });
-		/* -----------------------------
-	 * On DOM ready functions
-	 * ---------------------------*/
+        /* -----------------------------
+     * On DOM ready functions
+     * ---------------------------*/
 
-	$document.ready(function () {
+    $document.ready(function () {
         CRUMINA.Bootstrap();
         CRUMINA.Materialize();
         CRUMINA.initSwiper();
         CRUMINA.progresBars();
-		CRUMINA.IsotopeSort();
+        CRUMINA.IsotopeSort();
 
         // Run scripts only if they included on page.
 
@@ -509,7 +507,7 @@ var CRUMINA = {};
 
         $('.mCustomScrollbar').perfectScrollbar({wheelPropagation:false});
 
-	});
+    });
 })(jQuery);
 /*----------------------Abhsihek's ChangesStarts from here----------------------*/
 
@@ -545,7 +543,7 @@ function workClone() {
     morework.appendChild(desccln);
 }
 
-<<<<<<< HEAD
+
 //Loader
 window.onload=function(){
         $('.loadermain').hide();
@@ -557,57 +555,52 @@ window.onload=function(){
 
 
 /*--------------------Header Manipulation--------------------*/
-    $('#user-header').change(function(){
-        
-        return false;
-    });
-    function headerURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            var img = new Image();
 
-
-            reader.onload = function (e) {
-                var check = $('#header-to-crop').attr('src', e.target.result);
-                $('#header-to-crop').attr('src', e.target.result);  
-                    console.log($('img#header-to-crop').width());
-                
-            }  
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+var _coverURL = window.URL || window.webkitURL;
     $("#user-header").change(function(){
-        $('#hit-cover-change').click();
-             
-        //$('#page-loading').show();
-        headerURL(this);
-        setTimeout(function(){
-            $('#header-to-crop').rcrop({
-                minSize : [700,340],
-                maxSize : [1300,340],
-                grid : true
-            });
-        },500 );
+       
+        var coverCurrentFile, img;
+        if ((coverCurrentFile = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                if(this.width > 1900 || this.height > 1500){
+
+                   $('#filelargehit').click();
+                   return false;
+                }
+                $('#hit-cover-change').click();
+                var coverReader = new FileReader();
+                coverReader.onload = function (e) {
+                    $('#header-to-crop').attr('src', e.target.result);
+                }  
+                coverReader.readAsDataURL(coverCurrentFile);
+                 setTimeout(function(){
+                    $('#header-to-crop').rcrop({
+                        minSize : [960,350],
+                        preserveAspectRatio:true,
+                    });
+                },500);
+            };
+            img.src = _coverURL.createObjectURL(coverCurrentFile);
+        }
     });
 
     var header_to_crop = $('#header-to-crop'),
-    inputs = {
+    inputsCover = {
         x : $('#cover-x'),
         y : $('#cover-y'),
         width : $('#cover-width'),
         height : $('#cover-height')
     },
-    fill = function(){
+    fillCover = function(){
         var values = header_to_crop.rcrop('getValues');
-        for(var coord in inputs){
-            inputs[coord].val(values[coord]);
+        for(var coord in inputsCover){
+            inputsCover[coord].val(values[coord]);
         }
     };
 
     // Fill inputs when Responsive Cropper is ready and when crop area is being resized or dragged 
-    header_to_crop.on('rcrop-change rcrop-ready', fill);
-    
+    header_to_crop.on('rcrop-change rcrop-ready', fillCover);
     $('.upload-cover-result').click(function(){
         $('#header-form').submit();
     });
@@ -616,7 +609,64 @@ window.onload=function(){
     /*--------------------Header Manipulation End--------------------*/
     
 
-//Upload Note Featured
+/*--------------------Upload Note Featured--------------------*/
+
+/*--------------------Avatar Manipulation--------------------*/
+
+var _AvatarURL = window.URL || window.webkitURL;
+    $("#user-avatar").change(function(){
+       
+        var currentAvatarFile, imgAvatar;
+        if ((currentAvatarFile = this.files[0])) {
+            imgAvatar = new Image();
+            imgAvatar.onload = function () {
+                if(this.width > 1900 || this.height > 1500){
+
+                   $('#filelargehit').click();
+                   return false;
+                }
+                $('#hit-avatar-change').click();
+                var avatarReader = new FileReader();
+                avatarReader.onload = function (e) {
+                    $('#avatar-to-crop').attr('src', e.target.result);
+                }  
+                avatarReader.readAsDataURL(currentAvatarFile);
+                 setTimeout(function(){
+                    $('#avatar-to-crop').rcrop({
+                        minSize : [300,300],
+                        preserveAspectRatio:true,
+                    });
+                },500);
+            };
+            imgAvatar.src = _AvatarURL.createObjectURL(currentAvatarFile);
+        }
+    });
+
+    var avatar_to_crop = $('#avatar-to-crop'),
+    inputs = {
+        x : $('#avatar-x'),
+        y : $('#avatar-y'),
+        width : $('#avatar-width'),
+        height : $('#avatar-height')
+    },
+    fill = function(){
+        var avatarValues = avatar_to_crop.rcrop('getValues');
+        for(var avatarCoords in inputs){
+            inputs[avatarCoords].val(avatarValues[avatarCoords]);
+        }
+    };
+
+    // Fill inputs when Responsive Cropper is ready and when crop area is being resized or dragged 
+    avatar_to_crop.on('rcrop-change rcrop-ready', fill);
+    $('.upload-avatar-result').click(function(){
+        $('#avatar-form').submit();
+    });
+
+
+    /*--------------------Avatar Manipulation End--------------------*/
+    
+
+/*--------------------Upload Note Featured--------------------*/
 function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -638,52 +688,9 @@ $('.olymp-close-icon').click(function(){
     $('.if-featured').hide();
     $('#note-featured').val('');
 });
-=======
-//29-06-2017-------------------------------------
-    $('#user-avatar').change(function(){
-        $('#hit-avatar-change').click();
-        return false;
-    });
-    /*--------------------Header Manipulation--------------------*/
-    $('#user-header').change(function(){
-        
-        return false;
-    });
-    function headerURL(input) {
-        if (input.files && input.files[0]) {
-            
-            var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#header-to-crop').attr('src', e.target.result);   
-            }  
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#user-header").change(function(){
-        $('#hit-cover-change').click();
-            var img = new Image();
-            console.log(img);
-             img.onload = function() {
-             }
+/*--------------------Upload Note Featured End--------------------*/
 
-        //$('#page-loading').show();
-        headerURL(this);
-        setTimeout(function(){
-            $('#header-to-crop').rcrop({
-                 minSize : [1368,472],
-                preserveAspectRatio:true,
-            });
-        },500 );
-    });
-    $('.upload-cover-result').click(function(){
-         var srcOriginalCover = $('#header-to-crop').rcrop('getValues');
-         alert(srcOriginalCover['width']);
-        
-    });
-
-    /*--------------------Header Manipulation End--------------------*/
->>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
 
     
 
