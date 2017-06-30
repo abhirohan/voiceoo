@@ -75,6 +75,7 @@
 			<h6>Upload Cover Pic</h6>
 			<span>Browse your system.</span>
 		</span>
+<<<<<<< HEAD
 		<form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}">
 				{{ csrf_field() }}
 				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
@@ -82,6 +83,10 @@
 				<input type="text" name="cover_height" id="cover-height">
 				<input type="text" name="cover_x" id="cover-x">
 				<input type="text" name="cover_y" id="cover-y">
+=======
+		<form enctype="multipart/form-data" id="header-form" method="POST">
+				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
+>>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
 		</form>
 		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 
@@ -102,6 +107,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
+<<<<<<< HEAD
 				<div class="image-wrapper">
 					<img id="header-to-crop" src="" alt="your header image" />
 					{{-- <button class="btn btn-success ">Crop Cover</button> --}}
@@ -111,6 +117,16 @@
 				<button class="btn btn-primary btn-md upload-cover-result">Crop
 					<div class="ripple-container"></div>
 				</button>
+=======
+				{{--<span class="upload-photo-item" id="avatar-upload">
+					<div id="upload-header-cover" style="width:1150px;"></div>
+					<button class="btn btn-success upload-cover-result">Crop Cover</button>
+				</span> --}}
+				<div class="image-wrapper">
+					<img id="header-to-crop" src="" alt="your image" />
+					<button class="btn btn-success upload-cover-result">Crop Cover</button>
+				</div>
+>>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
 			</div>
 		</div>
 		

@@ -5320,11 +5320,14 @@ ol ol li {
     .image-wrapper img{
        width: 100%
     }
+<<<<<<< HEAD
     .rcrop-wrapper .rcrop-outer {
       background: #000 !important;
     }
 
 
+=======
+>>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
     /*------------------------Loader-----------------------*/
      #page-loading {
       position: fixed;

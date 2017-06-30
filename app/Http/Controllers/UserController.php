@@ -24,12 +24,17 @@ class UserController extends Controller
     public function index(Request $request, $id)
     {
         $userData       = User::find($id);
+<<<<<<< HEAD
         $currentLoggedInUser = Auth::User()->id;
         $userDetails = User::find($currentLoggedInUser);
+=======
+        $userDetails       = Auth::User();
+>>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
         $userEducations = Education::where('user_id',$id)->get();
         $userInterests  = Interest::where('user_id',$id)->get();
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
+<<<<<<< HEAD
         return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));  
 
     }
@@ -38,6 +43,9 @@ class UserController extends Controller
         $currentLoggedInUser = Auth::User()->id;
         $userDetails = User::find($currentLoggedInUser);
         return view('newsfeed',compact('userDetails'));   
+=======
+        return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));   
+>>>>>>> a314fd82151630e1a5ee6466052588a349643dd2
     }
 
     public function aboutIndex(Request $request, $id){
