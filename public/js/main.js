@@ -558,45 +558,55 @@ window.onload=function(){
 
 var _coverURL = window.URL || window.webkitURL;
     $("#user-header").change(function(){
-       
         var coverCurrentFile, img;
         if ((coverCurrentFile = this.files[0])) {
             img = new Image();
             img.onload = function () {
-                /*if(this.width > 1900 || this.height > 1500){
-
-                   $('#filelargehit').click();
-                   return false;
-                }*/
-                console.log(this.width);
+                var maxWidth  = 1920; // Max width for the image
+                var maxHeight = 6000;    // Max height for the image
+                var minWidth  = 900; // Max width for the image
+                var minHeight = 700;    // Max height for the image
+                var ratio = 0;  // Used for aspect ratio
                 var nWidth  = this.width;
                 var nHeight = this.height;
+                if(nHeight > maxHeight || nWidth < minWidth || nHeight < minHeight ){
+                    $('#filelargehit').click();
+                   return false;
+                }
+                if(nWidth > maxWidth){
+                    ratio = maxWidth / nWidth;   // get ratio for scaling image
+                    nHeight = nHeight * ratio;    // Reset height to match scaled image
+                    nWidth  = nWidth * ratio;    // Reset width to match scaled image
+                }
                 var coverReader = new FileReader();
                 coverReader.onload = function (e) {
                     $('#header-to-crop').attr('src', e.target.result);
                 }  
                 coverReader.readAsDataURL(coverCurrentFile);
-                    setTimeout(function(){
-                        var source_img = document.getElementById("header-to-crop");
-                    var target_img = document.getElementById("tests");
+                setTimeout(function(){
+                    var source_img = document.getElementById("header-to-crop");
+                    var target_img = document.getElementById("covershow");
                     var quality =  60;
-                    $('#tests').val(target_img.src);
                     target_img.src = jic.compress(source_img,quality,nWidth,nHeight).src;
-                    $('#header-to-crop').remove();
-                    },1000);
+                    $('#covershow').attr('src',target_img.src);
+                    $('#header-to-crop').css('display','none');
                     setTimeout(function(){$('#hit-cover-change').click();},1000);
-                 setTimeout(function(){
-                    $('#tests').rcrop({
-                        minSize : [960,350],
-                        preserveAspectRatio:true,
-                    });
+                     setTimeout(function(){
+                        $('#covershow').rcrop({
+                            minSize : [960,350],
+                            grid : true,
+                            preserveAspectRatio:true,
+                        });
+                    },500);
+                    $('#coverimagebase64').val(target_img.src);
                 },1000);
+
             };
             img.src = _coverURL.createObjectURL(coverCurrentFile);
         }
     });
 
-    var header_to_crop = $('#header-to-crop'),
+    var header_to_crop = $('#covershow'),
     inputsCover = {
         x : $('#cover-x'),
         y : $('#cover-y'),

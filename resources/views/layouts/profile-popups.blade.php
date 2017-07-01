@@ -8,17 +8,15 @@
 		<span class="upload-photo-item" onClick="$('#user-header').click();">
 			<svg class="olymp-close-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-close-icon"></use></svg>
 
-			<h6>File is too large</h6>
-			<span>File should be of max. width : 1900 .</span>
+			<h6>Invalid File Dimensions</h6>
+			<span>File should be of  size Min. width : 960px  and Max. Height : 768px</span><br>
+			<span>{ OR }</span><br>
+			<span>File dimensions are too large.</span>
 		</span>
 
 		<form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}" style="display: none;">
 				{{ csrf_field() }}
 				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
-				<input type="hidden" name="cover_width" id="cover-width">
-				<input type="hidden" name="cover_height" id="cover-height">
-				<input type="hidden" name="cover_x" id="cover-x">
-				<input type="hidden" name="cover_y" id="cover-y">
 		</form>
 		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 
@@ -104,14 +102,14 @@
 			<span>Browse your system.</span>
 		</span>
 
-		<form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}" style="display: none;">
+		{{-- <form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}" style="display: none;">
 				{{ csrf_field() }}
 				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
 				<input type="hidden" name="cover_width" id="cover-width">
 				<input type="hidden" name="cover_height" id="cover-height">
 				<input type="hidden" name="cover_x" id="cover-x">
 				<input type="hidden" name="cover_y" id="cover-y">
-		</form>
+		</form> --}}
 
 		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 	</div>
@@ -132,8 +130,9 @@
 			<form enctype="multipart/form-data" id="header-forms" method="POST" action="{{ route('coverupload')}}">
 				{{ csrf_field() }}
 				<div class="image-wrapper">
-					<img src="" name="user_header_change" id="tests">
+				<img src="" name="user_header_change" id="covershow">
 				</div>
+				<input type="hidden" id="coverimagebase64" name="cover64">
 				<input type="hidden" name="cover_width" id="cover-width">
 				<input type="hidden" name="cover_height" id="cover-height">
 				<input type="hidden" name="cover_x" id="cover-x">

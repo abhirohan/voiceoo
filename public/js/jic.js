@@ -29,17 +29,20 @@ var jic = {
              if(typeof output_format !== "undefined" && output_format=="png"){
                 mime_type = "image/png";
              }*/
-             var mime_type = "image/jpeg";
+            var mime_type = "image/jpeg";
              
-             //console.log(source_img_obj);
-             var cvs = document.createElement('canvas');
-             cvs.width  = nWidth;
-             cvs.height = nHeight;
-             var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0);
-             var newImageData = cvs.toDataURL(mime_type, quality/100);
-             var result_image_obj = new Image();
-             result_image_obj.src = newImageData;
-             return result_image_obj;
+
+            var cvs = document.createElement('canvas');
+            cvs.width  = nWidth * 1;
+            cvs.height = nHeight * 1;
+            console.log(cvs.width);
+            console.log(cvs.height);
+            //cvs.height = cvs.nWidth * (nHeight / nWidth);
+            var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0,cvs.width,cvs.height);
+            var newImageData = cvs.toDataURL(mime_type, quality/100);
+            var result_image_obj = new Image();
+            result_image_obj.src = newImageData;
+            return result_image_obj;
         },
 
         /**

@@ -73,19 +73,30 @@ class UserController extends Controller
     }
 
     public function uploadCover(Request $request){
-        //dd($request);
-        if($request->hasFile('user_header')){
-            $cover = $request->file('user_header');
-            $coverName = time() . '.' . $cover->getClientOriginalExtension();
+        //dd($request);             
+        if(request('cover64')){
+
+            $cover = request('cover64');
+            list($type, $cover) = explode(';', $cover);
+            list(, $cover)      = explode(',', $cover);
+            $cover = base64_decode($cover);
+            $coverName = Auth::user()->first_name.".".time()."-".Auth::user()->id;
+            file_put_contents($coverName.'.jpg', $cover);
+
+            $finalcover = $coverName.'.jpg';
             $coverWidth  = request('cover_width');
             $coverHeight = request('cover_height');
             $coverX      = request('cover_x');
             $coverY      = request('cover_y');
-            Image::make($cover)->crop($coverWidth, $coverHeight, $coverX, $coverY)->save(public_path('/uploads/covers/' . $coverName));
-
-            $user = Auth::user();
-            $user->cover = $coverName;
-            $user->save();
+            $img = Image::make($finalcover)->crop($coverWidth, $coverHeight, $coverX, $coverY)->save(public_path('/uploads/covers/' . $finalcover));
+            if(!$img){
+                echo "abhi";
+                dd('error');
+            }else{
+                $user = Auth::user();
+                $user->cover = $finalcover;
+                $user->save();                
+            }
         }
         
 
