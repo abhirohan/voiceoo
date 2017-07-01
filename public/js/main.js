@@ -23,7 +23,7 @@ var CRUMINA = {};
      * Equal height elements
      * Script file: theme-plugins.js
      * Documentation about used plugin:
-     * http://brm.io/jquery-match-height/
+     * http://brm.io/jquery-match-heightź
      * ---------------------------*/
     CRUMINA.equalHeight = function () {
         $('.js-equal-child').find('.theme-module').matchHeight({
@@ -563,23 +563,34 @@ var _coverURL = window.URL || window.webkitURL;
         if ((coverCurrentFile = this.files[0])) {
             img = new Image();
             img.onload = function () {
-                if(this.width > 1900 || this.height > 1500){
+                /*if(this.width > 1900 || this.height > 1500){
 
                    $('#filelargehit').click();
                    return false;
-                }
-                $('#hit-cover-change').click();
+                }*/
+                console.log(this.width);
+                var nWidth  = this.width;
+                var nHeight = this.height;
                 var coverReader = new FileReader();
                 coverReader.onload = function (e) {
                     $('#header-to-crop').attr('src', e.target.result);
                 }  
                 coverReader.readAsDataURL(coverCurrentFile);
+                    setTimeout(function(){
+                        var source_img = document.getElementById("header-to-crop");
+                    var target_img = document.getElementById("tests");
+                    var quality =  60;
+                    $('#tests').val(target_img.src);
+                    target_img.src = jic.compress(source_img,quality,nWidth,nHeight).src;
+                    $('#header-to-crop').remove();
+                    },1000);
+                    setTimeout(function(){$('#hit-cover-change').click();},1000);
                  setTimeout(function(){
-                    $('#header-to-crop').rcrop({
+                    $('#tests').rcrop({
                         minSize : [960,350],
                         preserveAspectRatio:true,
                     });
-                },500);
+                },1000);
             };
             img.src = _coverURL.createObjectURL(coverCurrentFile);
         }
@@ -602,7 +613,7 @@ var _coverURL = window.URL || window.webkitURL;
     // Fill inputs when Responsive Cropper is ready and when crop area is being resized or dragged 
     header_to_crop.on('rcrop-change rcrop-ready', fillCover);
     $('.upload-cover-result').click(function(){
-        $('#header-form').submit();
+        $('#header-forms').submit();
     });
 
 

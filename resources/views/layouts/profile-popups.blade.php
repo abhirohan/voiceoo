@@ -112,6 +112,7 @@
 				<input type="hidden" name="cover_x" id="cover-x">
 				<input type="hidden" name="cover_y" id="cover-y">
 		</form>
+
 		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 	</div>
 </div>
@@ -128,9 +129,18 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
+			<form enctype="multipart/form-data" id="header-forms" method="POST" action="{{ route('coverupload')}}">
+				{{ csrf_field() }}
 				<div class="image-wrapper">
-					<img id="header-to-crop" src="" alt="your header image" />
+					<img src="" name="user_header_change" id="tests">
 				</div>
+				<input type="hidden" name="cover_width" id="cover-width">
+				<input type="hidden" name="cover_height" id="cover-height">
+				<input type="hidden" name="cover_x" id="cover-x">
+				<input type="hidden" name="cover_y" id="cover-y">
+		</form>
+				
+					<img id="header-to-crop" src="" alt="your header image" />
 			</div>
 			<div class="col-lg-12 col-sm-12 text-center">
 				<button class="btn btn-primary btn-md upload-cover-result">Crop

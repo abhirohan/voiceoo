@@ -17,6 +17,7 @@
 <script src="j{{ route('basepath') }}/js/daterangepicker.min.js"></script>
 <!-- Init functions -->
 <script src="{{ route('basepath') }}/js/rcrop.min.js"></script>
+<script src="{{ route('basepath') }}/js/jic.js"></script>
 <script src="{{ route('basepath') }}/js/main.js"></script>
 
 

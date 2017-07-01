@@ -1,6 +1,7 @@
 
 <!-- jQuery first, then Other JS. -->
 <script src="{{ route('basepath') }}/js/jquery-3.2.0.min.js"></script>
+<script src="{{ route('basepath') }}/js/jic.js"></script>
 <!-- Js effects for material design. + Tooltips -->
 <script src="{{ route('basepath') }}/js/material.min.js"></script>
 <!-- Helper scripts (Tabs, Equal height, Scrollbar, etc) -->
