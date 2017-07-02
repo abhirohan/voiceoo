@@ -46,7 +46,11 @@
 
 @include('layouts.navbar')
 {{-- Loader Start --}}
-<div class="loadermain">
-  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>
+<div id="loadermain">
+  <div class="three-balls">
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+  </div>
 </div>
 {{-- Loader End --}}

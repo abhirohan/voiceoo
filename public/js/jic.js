@@ -24,25 +24,33 @@ var jic = {
          * @return {Image} result_image_obj The compressed Image Object
          */
 
-        compress: function(source_img_obj, quality,nWidth,nHeight){
-             /*output_format =
-             if(typeof output_format !== "undefined" && output_format=="png"){
-                mime_type = "image/png";
-             }*/
-            var mime_type = "image/jpeg";
-             
+        compressCover: function(source_img_obj, quality,nWidth,nHeight){
 
+            var mime_type = "image/jpeg";
             var cvs = document.createElement('canvas');
             cvs.width  = nWidth * 1;
             cvs.height = nHeight * 1;
-            console.log(cvs.width);
-            console.log(cvs.height);
-            //cvs.height = cvs.nWidth * (nHeight / nWidth);
             var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0,cvs.width,cvs.height);
             var newImageData = cvs.toDataURL(mime_type, quality/100);
             var result_image_obj = new Image();
             result_image_obj.src = newImageData;
             return result_image_obj;
+        },
+
+        compressAvatar: function(source_img_obj, quality,nWidthAvatar,nheightAvatar){
+
+            var mime_type = "image/jpeg";
+            var cvsAvatar = document.createElement('canvas');
+            cvsAvatar.width  = nWidthAvatar * 0.8;
+            cvsAvatar.height = nheightAvatar * 0.8;
+            console.log(cvsAvatar.width);
+            console.log(cvsAvatar.height);
+            var ctxAvatar = cvsAvatar.getContext("2d").drawImage(source_img_obj, 0, 0,cvsAvatar.width,cvsAvatar.height);
+            var newAvatarImageData = cvsAvatar.toDataURL(mime_type, quality/100);
+            var result_avatar_obj = new Image();
+            result_avatar_obj.src = newAvatarImageData;
+            console.log(result_avatar_obj.src);
+            return result_avatar_obj;
         },
 
         /**

@@ -5324,14 +5324,17 @@ ol ol li {
     .rcrop-wrapper .rcrop-outer {
       background: #000 !important;
     }
+    .rcrop-wrapper img {
+      max-height: 400px;
+}
+
 
 
 
     /*------------------------Loader-----------------------*/
-     #page-loading {
+     #loadermain {
       position: fixed;
       top: 0;
-      display: none;
       left: 0;
       bottom: 0;
       right: 0;

@@ -1,4 +1,4 @@
-{{-- File too large --}}
+{{-- File too large Header --}}
 <div class="modal fade" id="filelarge" style="z-index: 99999;" >
 	<div class="modal-dialog ui-block window-popup filelarge">
 		<div class="ui-block-title">
@@ -13,75 +13,32 @@
 			<span>{ OR }</span><br>
 			<span>File dimensions are too large.</span>
 		</span>
-
-		<form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}" style="display: none;">
-				{{ csrf_field() }}
-				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
-		</form>
 		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
-
 	</div>
 </div>
 <span data-toggle="modal" data-target="#filelarge" id="filelargehit"></span>
-<!-- Window-popup Update Avatar Photo -->
 
-<div class="modal fade" id="update-avtar-photo">
-	<div class="modal-dialog ui-block window-popup update-header-photo">
-		<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+{{-- File too large Header --}}
+<div class="modal fade" id="filelargeavatar" style="z-index: 99999;" >
+	<div class="modal-dialog ui-block window-popup filelarge">
+		<div class="ui-block-title">
+			<h6 class="title">File Error</h6>
+		</div>
+
+		<span class="upload-photo-item" onClick="$('#user-header').click();">
 			<svg class="olymp-close-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-close-icon"></use></svg>
-		</a>
 
-		<div class="ui-block-title">
-			<h6 class="title">Update Photo</h6>
-		</div>
-
-		<span class="upload-photo-item" onClick="$('#user-avatar').click();">
-			<svg class="olymp-computer-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-computer-icon"></use></svg>
-
-			<h6>Upload Photo</h6>
-			<span>Browse your system.</span>
+			<h6>Invalid File Dimensions</h6>
+			<span>File should be of  size Min. width : 960px  and Max. Height : 768px</span><br>
+			<span>{ OR }</span><br>
+			<span>File dimensions are too large.</span>
 		</span>
-
-		<form enctype="multipart/form-data" id="avatar-form" method="POST" action="{{ route('avatarupload')}}" style="display: none;">
-				{{ csrf_field() }}
-				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
-				<input type="hidden" name="avatar_width" id="avatar-width">
-				<input type="hidden" name="avatar_height" id="avatar-height">
-				<input type="hidden" name="avatar_x" id="avatar-x">
-				<input type="hidden" name="avatar_y" id="avatar-y">
-		</form>
-		<span data-toggle="modal" data-target="#crop-section-avatar" id="hit-avatar-change"></span>
+		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 	</div>
 </div>
+<span data-toggle="modal" data-target="#filelargeavatar" id="avatarfilelargehit"></span>
 
 
-<!-- ... end Window-popup Update Avatar Photo -->
-
-<!-- Window-popup Crop Section header -->
-
-<div class="modal fade" id="crop-section-avatar">
-	<div class="modal-dialog ui-block window-popup crop-section-avatar">
-		<div class="ui-block-title">
-			<h6 class="title">Crop the Image</h6>
-		</div>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="image-wrapper">
-					<img id="avatar-to-crop" src="" alt="your avatar image" />
-				</div>
-			</div>
-			<div class="col-lg-12 col-sm-12 text-center">
-				<button class="btn btn-primary btn-md upload-avatar-result">Crop
-					<div class="ripple-container"></div>
-				</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-<!-- ... end Window-popup Window-popup Crop Section Header  -->
 
 <!-- Window-popup Update Header Photo -->
 
@@ -101,16 +58,10 @@
 			<h6>Upload Cover Pic</h6>
 			<span>Browse your system.</span>
 		</span>
-
-		{{-- <form enctype="multipart/form-data" id="header-form" method="POST" action="{{ route('coverupload')}}" style="display: none;">
+		<form enctype="multipart/form-data" id="header-form" method="POST" style="display: none;">
 				{{ csrf_field() }}
 				<input type="file" name="user_header" id="user-header" accept="image/*" style="overflow: hidden; opacity:0">
-				<input type="hidden" name="cover_width" id="cover-width">
-				<input type="hidden" name="cover_height" id="cover-height">
-				<input type="hidden" name="cover_x" id="cover-x">
-				<input type="hidden" name="cover_y" id="cover-y">
-		</form> --}}
-
+		</form>
 		<span data-toggle="modal" data-target="#crop-section-header" id="hit-cover-change"></span>
 	</div>
 </div>
@@ -127,22 +78,90 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-			<form enctype="multipart/form-data" id="header-forms" method="POST" action="{{ route('coverupload')}}">
-				{{ csrf_field() }}
-				<div class="image-wrapper">
-				<img src="" name="user_header_change" id="covershow">
-				</div>
-				<input type="hidden" id="coverimagebase64" name="cover64">
-				<input type="hidden" name="cover_width" id="cover-width">
-				<input type="hidden" name="cover_height" id="cover-height">
-				<input type="hidden" name="cover_x" id="cover-x">
-				<input type="hidden" name="cover_y" id="cover-y">
-		</form>
-				
-					<img id="header-to-crop" src="" alt="your header image" />
+				<form enctype="multipart/form-data" id="header-forms" method="POST" action="{{ route('coverupload')}}">
+					{{ csrf_field() }}
+					<div class="image-wrapper">
+					<img src="" name="user_header_change" id="covershow">
+					</div>
+					<input type="hidden" id="coverimagebase64" name="cover64">
+					<input type="hidden" name="cover_width" id="cover-width">
+					<input type="hidden" name="cover_height" id="cover-height">
+					<input type="hidden" name="cover_x" id="cover-x">
+					<input type="hidden" name="cover_y" id="cover-y">
+			    </form>
+					
+				<img id="header-to-crop" src="" alt="your header image" />
 			</div>
 			<div class="col-lg-12 col-sm-12 text-center">
 				<button class="btn btn-primary btn-md upload-cover-result">Crop
+					<div class="ripple-container"></div>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- ... end Window-popup Window-popup Crop Section Header  -->
+
+
+
+<!-- Window-popup Update Avatar Photo -->
+
+<div class="modal fade" id="update-avtar-photo">
+	<div class="modal-dialog ui-block window-popup update-avtar-photo">
+		<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+			<svg class="olymp-close-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-close-icon"></use></svg>
+		</a>
+
+		<div class="ui-block-title">
+			<h6 class="title">Update Photo</h6>
+		</div>
+
+		<span class="upload-photo-item" onClick="$('#user-avatar').click();">
+			<svg class="olymp-computer-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-computer-icon"></use></svg>
+
+			<h6>Upload Photo</h6>
+			<span>Browse your system.</span>
+		</span>
+
+		<form enctype="multipart/form-data" id="avatar-form" method="POST" action="{{ route('avatarupload')}}" style="display: none;">
+				{{ csrf_field() }}
+				<input type="file" name="user_avatar" id="user-avatar" accept="image/*" style="overflow: hidden; opacity:0">
+		</form>
+		<span data-toggle="modal" data-target="#crop-section-avatar" id="hit-avatar-change"></span>
+	</div>
+</div>
+
+
+<!-- ... end Window-popup Update Avatar Photo -->
+
+<!-- Window-popup Crop Section header -->
+
+<div class="modal fade" id="crop-section-avatar">
+	<div class="modal-dialog ui-block window-popup crop-section-avatar">
+		<div class="ui-block-title">
+			<h6 class="title">Crop the Image</h6>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<form enctype="multipart/form-data" id="avatar-forms" method="POST" action="{{ route('avatarupload')}}">
+					{{ csrf_field() }}
+					<div class="image-wrapper">
+					<img src="" name="user_cover_change" id="avatarShow">
+					</div>
+					<input type="hidden" id="avatarimagebase64" name="avatar64">
+					<input type="hidden" name="avatar_width" id="avatar-width">
+					<input type="hidden" name="avatar_height" id="avatar-height">
+					<input type="hidden" name="avatar_x" id="avatar-x">
+					<input type="hidden" name="avatar_y" id="avatar-y">
+			    </form>
+				
+				<img id="avatar-to-crop" src="" alt="your header image" />
+			</div>
+			<div class="col-lg-12 col-sm-12 text-center">
+				<button class="btn btn-primary btn-md upload-avatar-result">Crop
 					<div class="ripple-container"></div>
 				</button>
 			</div>

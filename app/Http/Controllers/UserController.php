@@ -52,20 +52,29 @@ class UserController extends Controller
     }
 
     public function uploadAvatar(Request $request){
-        // /dd($request);
-            if($request->hasFile('user_avatar')){
-            $avatar = $request->file('user_avatar');
-            $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
-            $avatarWidth  = request('avatar_width');
-            $avatarHeight = request('avatar_height');
-            $avatarX      = request('avatar_x');
-            $avatarY      = request('avatar_y');
-            Image::make($avatar)->crop($avatarWidth, $avatarHeight, $avatarX, $avatarY)->save(public_path('/uploads/avatars/' . $avatarName));
+            //dd($request);
+            if(request('avatar64')){
+                $avatar = request('avatar64');
+                list($type, $avatar) = explode(';', $avatar);
+                list(, $avatar)      = explode(',', $avatar);
+                $avatar = base64_decode($avatar);
+                $avatarName = Auth::user()->first_name.".".time()."-".Auth::user()->id;
+                file_put_contents($avatarName.'.jpg', $avatar);
 
-            $user = Auth::user();
-            $user->avatar = $avatarName;
-            $user->save();
-        }
+                $finalavatar = $avatarName.'.jpg';
+                $avatarWidth  = request('avatar_width');
+                $avatarHeight = request('avatar_height');
+                $avatarX      = request('avatar_x');
+                $avatarY      = request('avatar_y');
+                $img = Image::make($finalavatar)->crop($avatarWidth, $avatarHeight, $avatarX, $avatarY)->save(public_path('/uploads/avatars/' . $finalavatar));
+                if(!$img){
+                    echo" Error In file Uploading please try Again";
+                }else{
+                    $user = Auth::user();
+                    $user->avatar = $finalavatar;
+                    $user->save();                
+                }
+            }
         
 
         return redirect()->route('profile');
@@ -75,7 +84,6 @@ class UserController extends Controller
     public function uploadCover(Request $request){
         //dd($request);             
         if(request('cover64')){
-
             $cover = request('cover64');
             list($type, $cover) = explode(';', $cover);
             list(, $cover)      = explode(',', $cover);

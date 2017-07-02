@@ -546,7 +546,7 @@ function workClone() {
 
 //Loader
 window.onload=function(){
-        $('.loadermain').hide();
+        $('#loadermain').hide();
 
 }
 //Upload Avatar
@@ -565,7 +565,7 @@ var _coverURL = window.URL || window.webkitURL;
                 var maxWidth  = 1920; // Max width for the image
                 var maxHeight = 6000;    // Max height for the image
                 var minWidth  = 900; // Max width for the image
-                var minHeight = 700;    // Max height for the image
+                var minHeight = 400;    // Max height for the image
                 var ratio = 0;  // Used for aspect ratio
                 var nWidth  = this.width;
                 var nHeight = this.height;
@@ -586,8 +586,8 @@ var _coverURL = window.URL || window.webkitURL;
                 setTimeout(function(){
                     var source_img = document.getElementById("header-to-crop");
                     var target_img = document.getElementById("covershow");
-                    var quality =  60;
-                    target_img.src = jic.compress(source_img,quality,nWidth,nHeight).src;
+                    var quality =  70;
+                    target_img.src = jic.compressCover(source_img,quality,nWidth,nHeight).src;
                     $('#covershow').attr('src',target_img.src);
                     $('#header-to-crop').css('display','none');
                     setTimeout(function(){$('#hit-cover-change').click();},1000);
@@ -597,7 +597,7 @@ var _coverURL = window.URL || window.webkitURL;
                             grid : true,
                             preserveAspectRatio:true,
                         });
-                    },500);
+                    },2000);
                     $('#coverimagebase64').val(target_img.src);
                 },1000);
 
@@ -634,57 +634,84 @@ var _coverURL = window.URL || window.webkitURL;
 
 /*--------------------Avatar Manipulation--------------------*/
 
-var _AvatarURL = window.URL || window.webkitURL;
+var _avatarURL = window.URL || window.webkitURL;
     $("#user-avatar").change(function(){
-       
-        var currentAvatarFile, imgAvatar;
-        if ((currentAvatarFile = this.files[0])) {
-            imgAvatar = new Image();
-            imgAvatar.onload = function () {
-                if(this.width > 1900 || this.height > 1500){
-
-                   $('#filelargehit').click();
+        var avatarCurrentFile, avatarimg;
+        if ((avatarCurrentFile = this.files[0])) {
+            avatarimg = new Image();
+            avatarimg.onload = function () {
+                var maxWidthAvatar  = 1920; // Max width for the image
+                var maxHeightAvatar = 6000;    // Max height for the image
+                var minWidthAvatar  = 600; // Max width for the image
+                var minHeightAvatar = 300;    // Max height for the image
+                var avatarRatio = 0;  // Used for aspect avatarRatio
+                var nWidthAvatar  = this.width;
+                var nHeightAvatar = this.height;
+                if(nHeightAvatar > maxHeightAvatar || nWidthAvatar < minWidthAvatar || nHeightAvatar < minWidthAvatar){
+                    $('#avatarfilelargehit').click();
                    return false;
                 }
-                $('#hit-avatar-change').click();
+                if(nWidthAvatar > maxWidthAvatar){
+                    avatarRatio = maxWidthAvatar / nWidthAvatar;   // get avatarRatio for scaling image
+                    nHeightAvatar = nHeightAvatar * avatarRatio;    // Reset height to match scaled image
+                    nWidthAvatar  = nWidthAvatar * avatarRatio;    // Reset width to match scaled image
+                }
                 var avatarReader = new FileReader();
                 avatarReader.onload = function (e) {
                     $('#avatar-to-crop').attr('src', e.target.result);
                 }  
-                avatarReader.readAsDataURL(currentAvatarFile);
-                 setTimeout(function(){
-                    $('#avatar-to-crop').rcrop({
-                        minSize : [300,300],
-                        preserveAspectRatio:true,
-                    });
-                },500);
+                avatarReader.readAsDataURL(avatarCurrentFile);
+                setTimeout(function(){
+                    var source_img = document.getElementById("avatar-to-crop");
+                    var target_img = document.getElementById("avatarShow");
+                    var quality =  70;
+                    target_img.src = jic.compressCover(source_img,quality,nWidthAvatar,nHeightAvatar).src;
+                    setTimeout(function(){$('#hit-avatar-change').click();},1000);
+                    $('#avatarShow').attr('src', target_img.src);
+                    $('#avatar-to-crop').css('display','none');
+                     setTimeout(function(){
+                        $('#avatarShow').rcrop({
+                            /*minSize : [200,200],
+                            maxSize : [900,900],*/
+                            preserveAspectRatio:true,
+                            grid : true,
+                            /*preview : {
+                                display: true,
+                                size : [300,300],
+                            }*/
+                        });
+                    },2000);
+                    $('#avatarimagebase64').val(target_img.src);
+                },1000);
+
             };
-            imgAvatar.src = _AvatarURL.createObjectURL(currentAvatarFile);
+            avatarimg.src = _avatarURL.createObjectURL(avatarCurrentFile);
         }
     });
 
-    var avatar_to_crop = $('#avatar-to-crop'),
-    inputs = {
+    var avatar_to_crop = $('#avatarShow'),
+    inputsAvatar = {
         x : $('#avatar-x'),
         y : $('#avatar-y'),
         width : $('#avatar-width'),
         height : $('#avatar-height')
     },
-    fill = function(){
-        var avatarValues = avatar_to_crop.rcrop('getValues');
-        for(var avatarCoords in inputs){
-            inputs[avatarCoords].val(avatarValues[avatarCoords]);
+    fillAvatar = function(){
+        var valuesAvatar = avatar_to_crop.rcrop('getValues');
+        for(var coordAvatar in inputsAvatar){
+            inputsAvatar[coordAvatar].val(valuesAvatar[coordAvatar]);
         }
     };
 
     // Fill inputs when Responsive Cropper is ready and when crop area is being resized or dragged 
-    avatar_to_crop.on('rcrop-change rcrop-ready', fill);
+    avatar_to_crop.on('rcrop-change rcrop-ready', fillAvatar);
     $('.upload-avatar-result').click(function(){
-        $('#avatar-form').submit();
+        $('#avatar-forms').submit();
     });
 
 
     /*--------------------Avatar Manipulation End--------------------*/
+
     
 
 /*--------------------Upload Note Featured--------------------*/
