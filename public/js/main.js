@@ -558,21 +558,22 @@ window.onload=function(){
 
 var _coverURL = window.URL || window.webkitURL;
     $("#user-header").change(function(){
+            $('#loadermain').show();
         var coverCurrentFile, img;
         if ((coverCurrentFile = this.files[0])) {
             img = new Image();
             img.onload = function () {
-                var maxWidth  = 1920; // Max width for the image
-                var maxHeight = 6000;    // Max height for the image
+                var maxWidth  = 3500; // Max width for the image
+                var maxHeight = 3000;    // Max height for the image
                 var minWidth  = 900; // Max width for the image
                 var minHeight = 400;    // Max height for the image
                 var ratio = 0;  // Used for aspect ratio
                 var nWidth  = this.width;
                 var nHeight = this.height;
-                if(nHeight > maxHeight || nWidth < minWidth || nHeight < minHeight ){
+                /*if(nHeight > maxHeight || nWidth < minWidth || nHeight < minHeight ){
                     $('#filelargehit').click();
                    return false;
-                }
+                }*/
                 if(nWidth > maxWidth){
                     ratio = maxWidth / nWidth;   // get ratio for scaling image
                     nHeight = nHeight * ratio;    // Reset height to match scaled image
@@ -598,6 +599,7 @@ var _coverURL = window.URL || window.webkitURL;
                             preserveAspectRatio:true,
                         });
                     },2000);
+                    $('#loadermain').hide();
                     $('#coverimagebase64').val(target_img.src);
                 },1000);
 

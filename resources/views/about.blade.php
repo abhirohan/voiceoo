@@ -4,6 +4,7 @@
 	<!-- About page data-->
 	<!-- Top Header -->
 
+	<div class="header-spacer"></div>
 	@include('layouts.profile-view')
 	<!-- ... end Top Header -->
 	<div class="container">
@@ -12,14 +13,16 @@
 				<div class="ui-block">
 					<div class="ui-block-title">
 						<h6 class="title">Hobbies and Interests</h6>
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-							<ul class="more-dropdown more-with-triangle">
-								<li>
-									<a href="{{ route('hobbiesSetting') }}">Update Hobbies</a>
-								</li>
-							</ul>
-						</div>
+						@if($userData->id == $currentLoggedInUser)
+							<div class="more">
+								<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+								<ul class="more-dropdown more-with-triangle">
+									<li>
+										<a href="{{ route('hobbiesSetting') }}">Update Hobbies</a>
+									</li>
+								</ul>
+							</div>
+						@endif
 					</div>
 					<div class="ui-block-content">
 						<div class="row">
@@ -33,11 +36,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Hobbies</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> hobbies</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite Hobbies</span>
+												</a>
+											@endif
 										</li>
 									@endif
 									@if($userInterest->tv_shows)
@@ -47,11 +58,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Tv Shows</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> favourite TV Shows</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite TV Shows</span>
+												</a>
+											@endif
 										</li>
 									@endif
 									@if($userInterest->fav_movies)
@@ -61,11 +80,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Movies</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> favourite Movies</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite Movies</span>
+												</a>
+											@endif
 										</li>
 									@endif
 									@if($userInterest->fav_games)
@@ -75,11 +102,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Games</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> favourite Games</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite Games</span>
+												</a>
+											@endif
 										</li>
 									@endif
 								</ul>
@@ -93,11 +128,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Music Bands / Artists</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> favourite Music Bands / Artists</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite Music Bands / Artists</span>
+												</a>
+											@endif
 										</li>
 									@endif
 									@if($userInterest->fav_books)
@@ -107,11 +150,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Books</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> favourite Books</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite Books</span>
+												</a>
+											@endif
 										</li>
 									@endif
 									@if($userInterest->fav_writers)
@@ -121,11 +172,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your favourite Writers</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> favourite writers</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your favourite Writers</span>
+												</a>
+											@endif
 										</li>
 									@endif
 									@if($userInterest->other_interests)
@@ -135,11 +194,19 @@
 										</li>
 									@else
 										<li>
-											<a href="{{ route('hobbiesSetting') }}" class="add-field">
-												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
-												</svg>
-												<span>Update your Interests</span>
-											</a>
+											@if($userData->id != $currentLoggedInUser)
+												<a href="#" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Ask <b>{{$userData->first_name}}'s</b> interests in life</span>
+												</a>
+											@else
+												<a href="{{ route('hobbiesSetting') }}" class="add-field">
+													<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+													</svg>
+													<span>Update your Interests</span>
+												</a>
+											@endif
 										</li>
 									@endif
 								</ul>
@@ -151,42 +218,65 @@
 				<div class="ui-block">
 					<div class="ui-block-title">
 						<h6 class="title">Education and Employement</h6>
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-							<ul class="more-dropdown more-with-triangle">
-								<li>
-									<a href="{{ route('educationSetting') }}">Update Education</a>
-								</li>
-								<li>
-									<a href="{{ route('educationSetting') }}">Update Employement/Work</a>
-								</li>
-							</ul>
-						</div>
+						@if($userData->id == $currentLoggedInUser)
+							<div class="more">
+								<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+								<ul class="more-dropdown more-with-triangle">
+									<li>
+										<a href="{{ route('educationSetting') }}">Update Education</a>
+									</li>
+									<li>
+										<a href="{{ route('educationSetting') }}">Update Employement/Work</a>
+									</li>
+								</ul>
+							</div>
+						@endif
 					</div>
 					<div class="ui-block-content">
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 								<ul class="widget w-personal-info item-block">
-									@foreach($userEducations as $userEducation)
-										<li>
-											<span class="title">{{ $userEducation->title }}</span> from 
-											<span class="title">{{ $userEducation->school_university }}</span>
-											<span class="date">{{  $userEducation->year }}</span>
-											<span class="text">{{  $userEducation->description }}</span>
-										</li>
-									@endforeach
+
+									@if( sizeof($userEducations) <= 0)
+										@if($userData->id != $currentLoggedInUser)
+											<a href="#" class="add-field">
+												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+												</svg>
+												<span>Ask <b>{{$userData->first_name}}</b> for Education Updates.</span>
+											</a>
+										@endif
+									@else
+										@foreach($userEducations as $userEducation)
+											<li>
+												<span class="title">{{ $userEducation->title }}</span> from 
+												<span class="title">{{ $userEducation->school_university }}</span>
+												<span class="date">{{  $userEducation->year }}</span>
+												<span class="text">{{  $userEducation->description }}</span>
+											</li>
+										@endforeach
+									@endif
 								</ul>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 								<ul class="widget w-personal-info item-block">
-									@foreach($userJobs as $userJob)
-									<li>
-										<span class="title">{{ $userJob->title }}</span> in 
-										<span class="title">{{ $userJob->company }}</span>
-										<span class="date">{{  $userJob->year }}</span>
-										<span class="text">{{  $userJob->description }}</span>
-									</li>
-									@endforeach
+									@if( sizeof($userJobs) <= 0)
+										@if($userData->id != $currentLoggedInUser)
+											<a href="#" class="add-field">
+												<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+												</svg>
+												<span>Ask <b>{{$userData->first_name}}</b> for Work Updates.</span>
+											</a>
+										@endif
+									@else
+										@foreach($userJobs as $userJob)
+										<li>
+											<span class="title">{{ $userJob->title }}</span> in 
+											<span class="title">{{ $userJob->company }}</span>
+											<span class="date">{{  $userJob->year }}</span>
+											<span class="text">{{  $userJob->description }}</span>
+										</li>
+										@endforeach
+									@endif
 								</ul>
 							</div>
 						</div>
@@ -197,38 +287,51 @@
 				<div class="ui-block">
 					<div class="ui-block-title">
 						<h6 class="title">Personal Info</h6>
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-							<ul class="more-dropdown more-with-triangle">
-								<li>
-									<a href="{{ route('personalSetting') }}">Update Personal Information</a>
-								</li>
-							</ul>
-						</div>
+						@if($userData->id == $currentLoggedInUser)
+							<div class="more">
+								<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+								<ul class="more-dropdown more-with-triangle">
+									<li>
+										<a href="{{ route('personalSetting') }}">Update Personal Information</a>
+									</li>
+								</ul>
+							</div>
+						@endif
 					</div>
 					<div class="ui-block-content">
 						<ul class="widget w-personal-info">
+						@if($userData->about)
 							<li>
 								<span class="title">About Me:</span>
 								<span class="text">{{ ucfirst($userData->about) }}
 								</span>
 							</li>
+						@endif
+						@if($userData->dob)
 							<li>
 								<span class="title">Birthday:</span>
 								<span class="text">{{ $userData->dob }}</span>
 							</li>
+						@endif
+						@if($userData->birthplace)
 							<li>
 								<span class="title">Birthplace:</span>
 								<span class="text">{{ ucfirst($userData->birthplace) }}</span>
 							</li>
+						@endif
+						@if($userData->city && $userData->country )
 							<li>
 								<span class="title">Lives in:</span>
 								<span class="text">{{ ucfirst($userData->city) }}, {{ ucfirst($userData->state) }}, {{ ucfirst($userData->country) }}</span>
 							</li>
+						@endif
+						@if($userData->occupation)
 							<li>
 								<span class="title">Occupation:</span>
 								<span class="text">{{ ucfirst($userData->occupation) }}</span>
 							</li>
+						@endif
+						@if($userData->created_at)
 							<li>
 								<span class="title">Joined:</span>
 								<span class="text">
@@ -237,49 +340,84 @@
 								</span>
 								
 							</li>
+						@endif
+						@if($userData->gender)
 							<li>
 								<span class="title">Gender:</span>
 								<span class="text">{{ ucfirst($userData->gender) }}</span>
 							</li>
+						@endif
+						@if($userData->marital_status)
 							<li>
 								<span class="title">Marital Status:</span>
 								<span class="text">{{ ucfirst($userData->marital_status) }}</span>
 							</li>
+						@endif
+						@if($userData->email)
 							<li>
 								<span class="title">Email:</span>
 								<a href="#" class="text">{{ ucfirst($userData->email) }}</a>
 							</li>
+						@endif
+						@if($userData->alternate_email)
 							<li>
 								<span class="title">Alternate Email:</span>
 								<a href="#" class="text">{{ ucfirst($userData->alternate_email)  }}</a>
 							</li>
+						@endif
+						@if($userData->website)
 							<li>
 								<span class="title">Website:</span>
 								<a href="#" class="text">{{ ucfirst($userData->website)  }}</a>
 							</li>
+						@endif
+						@if($userData->phone)
 							<li>
 								<span class="title">Phone Number:</span>
 								<span class="text">{{ ucfirst($userData->phone)  }}</span>
 							</li>
+						@endif
+						@if($userData->religious_belifs)
 							<li>
 								<span class="title">Religious Belifs:</span>
 								<span class="text">{{ ucfirst($userData->religious_belifs)   }}</span>
 							</li>
+						@endif
+						@if($userData->political_incline)
 							<li>
 								<span class="title">Political Incline:</span>
 								<span class="text">{{ ucfirst($userData->political_incline)  }}</span>
 							</li>
+						@endif
+						@if($userData->id != $currentLoggedInUser)
+							<li>
+								<a href="#" class="add-field">
+									<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+									</svg>
+									<span>Ask <b>{{$userData->first_name}}</b> for more information.</span>
+								</a>
+							</li>
+							@endif
 						</ul>
 
 						<div class="widget w-socials">
 							<h6 class="title">Other Social Networks:</h6>
 							@foreach($userSocials as $userSocial)
 								@if($userSocial->facebook == '' || $userSocial->twitter || $userSocial->google_plus || $userSocial->vk || $userSocial->pinterest || $userSocial->tumblr || $userSocial->linkedin || $userSocial->skype || $userSocial->instagram || $userSocial->github || $userSocial->soundcloud || $userSocial->flickr || $userSocial->youtube || $userSocial->vine || $userSocial->rss || $userSocial->dribble || $userSocial->behance || $userSocial->spotify)
+
+									@if($userData->id != $currentLoggedInUser)
+										<a href="#" class="add-field">
+											<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+											</svg>
+												<span>Ask <b>{{$userData->first_name}}</b> for more updates.</span>
+										</a>
+									@else
 										<a href="{{ route('personalSetting') }}" class="add-field">
 											<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
 											</svg>
 												<span>Update your social network links.</span>
 										</a>
+									@endif
 								@endif
 								@if($userSocial->facebook != '')
 									<a href="{{ $userSocial->facebook  }}" target="_blank" class="social-item bg-facebook">

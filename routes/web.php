@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('/settingeducation', 'SettingpageController@storeEducation')->name('saveEducationSetting');
 	Route::post('/settingWork', 'SettingpageController@storeWork')->name('saveWorkSetting');
 
+	//Follow Unfollow 
+	Route::get('/followerrequest/{follower?}/{following?}','UserConnectController@follow')->name('followerrequest');
+
 
 
 	//Logout

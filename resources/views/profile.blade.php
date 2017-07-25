@@ -725,23 +725,38 @@
 										<span class="text">{{ $userInterest->music_artists }}</span>
 									</li>
 								@endif
-							@endforeach
-							<a href="{{ route('hobbiesSetting') }}" class="add-field">
+								@if($userInterest->hobbies == '')
+									<a href="{{ route('hobbiesSetting') }}" class="add-field">
 										<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
 										</svg>
-											<span>Update your hobbies & interests.</span>
+										<span>Update your hobbies & interests.</span>
 									</a>
+								@else
+									<li>
+										<span class="title">Favourite Music Bands / Artists:</span>
+										<span class="text">{{ $userInterest->hobbies }}</span>
+									</li>
+								@endif
+							@endforeach
 						</ul>
 
 						<div class="widget w-socials">
 							<h6 class="title">Other Social Networks:</h6>
 							@foreach($userSocials as $userSocial)
 								@if($userSocial->facebook == '' || $userSocial->twitter || $userSocial->google_plus || $userSocial->vk || $userSocial->pinterest || $userSocial->tumblr || $userSocial->linkedin || $userSocial->skype || $userSocial->instagram || $userSocial->github || $userSocial->soundcloud || $userSocial->flickr || $userSocial->youtube || $userSocial->vine || $userSocial->rss || $userSocial->dribble || $userSocial->behance || $userSocial->spotify)
+									@if($userData->id != $currentLoggedInUser)
+										<a href="#" class="add-field">
+											<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
+											</svg>
+												<span>Ask <b>{{$userData->first_name}}</b> for more updates.</span>
+										</a>
+									@else
 										<a href="{{ route('personalSetting') }}" class="add-field">
 											<svg class="olymp-plus-icon" "><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-plus-icon"></use>
 											</svg>
 												<span>Update your social network links.</span>
 										</a>
+									@endif
 								@endif
 								@if($userSocial->facebook != '')
 									<a href="{{ $userSocial->facebook  }}" target="_blank" class="social-item bg-facebook">
@@ -1225,7 +1240,7 @@
 					</div>
 				</div>
 
-				<div class="ui-block">
+				{{-- <div class="ui-block">
 					<div class="ui-block-title">
 						<h6 class="title">Blog Posts</h6>
 					</div>
@@ -1261,11 +1276,11 @@
 							</article>
 						</li>
 					</ul>
-				</div>
+				</div> --}}
 
 				<div class="ui-block">
 					<div class="ui-block-title">
-						<h6 class="title">Friends (86)</h6>
+						<h6 class="title">Followers (86)</h6>
 					</div>
 					<div class="ui-block-content">
 						<ul class="widget w-faved-page js-zoom-gallery">
@@ -1348,7 +1363,7 @@
 
 				<div class="ui-block">
 					<div class="ui-block-title">
-						<h6 class="title">Favourite Pages</h6>
+						<h6 class="title">Following (11)</h6>
 					</div>
 
 					<ul class="widget w-friend-pages-added notification-list friend-requests">
@@ -1450,7 +1465,7 @@
 
 				</div>
 
-				<div class="ui-block">
+				{{-- <div class="ui-block">
 					<div class="ui-block-title">
 						<h6 class="title">James's Poll</h6>
 					</div>
@@ -1629,7 +1644,7 @@
 						</ul>
 						<a href="#" class="btn btn-md-2 btn-border-think custom-color c-grey full-width">Vote Now!</a>
 					</div>
-				</div>
+				</div> --}}
 			</div>
 
 			<!-- ... end Right Sidebar -->

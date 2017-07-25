@@ -23,14 +23,14 @@ class UserController extends Controller
     }
     public function index(Request $request, $id)
     {
-        $userData       = User::find($id);
+        $userData            = User::find($id);
         $currentLoggedInUser = Auth::User()->id;
-        $userDetails = User::find($currentLoggedInUser);
-        $userEducations = Education::where('user_id',$id)->get();
-        $userInterests  = Interest::where('user_id',$id)->get();
-        $userJobs       = Job::where('user_id',$id)->get();
-        $userSocials    = Social_user::where('user_id',$id)->get();
-        return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));  
+        $userDetails         = User::find($currentLoggedInUser);
+        $userEducations      = Education::where('user_id',$id)->get();
+        $userInterests       = Interest::where('user_id',$id)->get();
+        $userJobs            = Job::where('user_id',$id)->get();
+        $userSocials         = Social_user::where('user_id',$id)->get();
+        return view('profile',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials','currentLoggedInUser'));  
 
     }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
         $userInterests  = Interest::where('user_id',$id)->get();
         $userJobs       = Job::where('user_id',$id)->get();
         $userSocials    = Social_user::where('user_id',$id)->get();
-        return view('about',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials'));
+        return view('about',compact('userData','userDetails','userEducations','userInterests','userJobs','userSocials','currentLoggedInUser'));
     }
 
     public function uploadAvatar(Request $request){

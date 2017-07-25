@@ -18,60 +18,63 @@
 									<li>
 										<a href="/aboutme/{{ $userData->id }}">About</a>
 									</li>
-									<li>
-										<a href="06-ProfilePage.html">Friends</a>
-									</li>
 								</ul>
 							</div>
 							<div class="col-lg-5 offset-lg-2 col-md-5 offset-md-2">
 								<ul class="profile-menu">
 									<li>
-										<a href="07-ProfilePage-Photos.html">Photos</a>
+										<a href="06-ProfilePage.html">Followers</a>
 									</li>
 									<li>
-										<a href="09-ProfilePage-Videos.html">Videos</a>
+										<a href="07-ProfilePage-Photos.html">Following</a>
 									</li>
-									<li>
-										<div class="more">
-											<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-											<ul class="more-dropdown more-with-triangle">
-												<li>
-													<a href="#">Report Profile</a>
-												</li>
-												<li>
-													<a href="#">Block Profile</a>
-												</li>
-											</ul>
-										</div>
-									</li>
+									@if($userData->id != $currentLoggedInUser)
+										<li>
+											<div class="more">
+												<svg class="olymp-three-dots-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+												<ul class="more-dropdown more-with-triangle">
+													<li>
+														<a href="#">Report Profile</a>
+													</li>
+													<li>
+														<a href="#">Block Profile</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+									@endif
 								</ul>
 							</div>
 						</div>
 
 						<div class="control-block-button">
-							<a href="35-YourAccount-FriendsRequests.html" class="btn btn-control bg-blue">
-								<svg class="olymp-happy-face-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-							</a>
+							@if($userData->id != $currentLoggedInUser)
+								<a href="{{ route('followerrequest')}}/{{$currentLoggedInUser}}/{{ $userData->id }}" class="btn btn-control bg-blue">
+									<svg class="olymp-happy-face-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+								</a>
+							@endif
 
 							<a href="#" class="btn btn-control bg-purple">
 								<svg class="olymp-chat---messages-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-chat---messages-icon"></use></svg>
 							</a>
 
-							<div class="btn btn-control bg-primary more">
-								<svg class="olymp-settings-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-settings-icon"></use></svg>
+							@if($userData->id === $currentLoggedInUser)
+								<div class="btn btn-control bg-primary more">
+									<svg class="olymp-settings-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-settings-icon"></use></svg>
 
-								<ul class="more-dropdown more-with-triangle triangle-bottom-right">
-									<li>
-										<a href="#" data-toggle="modal" data-target="#update-avtar-photo">Update Profile Photo</a>
-									</li>
-									<li>
-										<a href="#" data-toggle="modal" data-target="#update-header-photo">Update Header Photo</a>
-									</li>
-									<li>
-										<a href="{{ route('accountSetting') }}">Account Settings</a>
-									</li>
-								</ul>
-							</div>
+									<ul class="more-dropdown more-with-triangle triangle-bottom-right">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#update-avtar-photo">Update Profile Photo</a>
+										</li>
+										<li>
+											<a href="#" data-toggle="modal" data-target="#update-header-photo">Update Header Photo</a>
+										</li>
+										<li>
+											<a href="{{ route('accountSetting') }}">Account Settings</a>
+										</li>
+									</ul>
+								</div>
+							@endif
 						</div>
 					</div>
 					<div class="top-header-author">
@@ -80,7 +83,10 @@
 						</a>
 						<div class="author-content">
 							<a href="/profile" class="h4 author-name">{{ ucfirst($userData->first_name)  }} {{ ucfirst($userData->last_name)  }}</a>
-							<div class="country">{{ $userData->city  }}, {{ $userData->state  }} {{ $userData->country  }}</div>
+							<div class="country">
+								{{ $userData->city  }}
+								@if($userData->city && $userData->state),@endif {{ $userData->state  }} {{ $userData->country  }}
+							</div>
 						</div>
 					</div>
 				</div>
