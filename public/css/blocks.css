@@ -5434,5 +5434,11 @@ ol ol li {
       }
     }
 /*------------------------Loader End-----------------------*/
+.if-featured{display: none;}
+.blog-fetured-upload{
+  width:150px;
+  min-width: 200px;
+}
+.featured-image-cross{cursor: pointer; position: absolute;}
 
 

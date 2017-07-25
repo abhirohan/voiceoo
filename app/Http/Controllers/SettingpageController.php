@@ -77,7 +77,7 @@ class SettingpageController extends Controller
         $currentLoggedInUsername = Auth::User()->first_name;
         $personalinfo     = User::find($currentLoggedInUser);
 
-        $personalinfo->first_name       = request('first_name');
+        $personalinfo->first_name       =  request('first_name');
         $personalinfo->alternate_email  =  request('email');
         $personalinfo->dob              =  request('dob');
         $personalinfo->last_name        =  request('last_name');

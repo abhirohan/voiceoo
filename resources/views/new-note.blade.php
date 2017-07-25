@@ -100,7 +100,7 @@
 									<textarea class="form-control" name="note_content" placeholder=""  ></textarea>
 								</div>
 								<div class="form-group with-icon label-floating if-featured">
-									<img src="/uploads/avatars/{{ $userDetails->avatar }}" id="fetatured-upload" class="blog-fetured-upload">
+									<img src="" id="fetatured-upload" class="blog-fetured-upload">
 									<span class="featured-image-cross">
 										<svg class="olymp-close-icon"><use xlink:href="{{ route('basepath') }}/icons/icons.svg#olymp-close-icon"></use></svg>
 									</span>

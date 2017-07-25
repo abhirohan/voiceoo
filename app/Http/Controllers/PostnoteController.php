@@ -32,5 +32,6 @@ class PostnoteController extends Controller
     		$newNote->featured_image  =  $filename;
     	}
     	$newNote->save();
+        return redirect()->route('newsfeed');
     }
 }

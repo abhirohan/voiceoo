@@ -729,8 +729,41 @@ function readURL(input) {
 }
 
 $("#note-featured").change(function(){
-    $('.if-featured').show();
-    readURL(this);
+    var noteFile, noteImg;
+    if ((noteFile = this.files[0])) {
+        noteImg = new Image();
+        noteImg.onload = function () {
+            var maxWidthAvatar  = 1920; // Max width for the image
+            var maxHeightAvatar = 6000;    // Max height for the image
+            var minWidthAvatar  = 600; // Max width for the image
+            var minHeightAvatar = 300;    // Max height for the image
+            var avatarRatio = 0;  // Used for aspect avatarRatio
+            var nWidthAvatar  = this.width;
+            var nHeightAvatar = this.height;
+            if(nWidthAvatar > maxWidthAvatar){
+                avatarRatio = maxWidthAvatar / nWidthAvatar;   // get avatarRatio for scaling image
+                nHeightAvatar = nHeightAvatar * avatarRatio;    // Reset height to match scaled image
+                nWidthAvatar  = nWidthAvatar * avatarRatio;    // Reset width to match scaled image
+            }
+            var avatarReader = new FileReader();
+            avatarReader.onload = function (e) {
+                $('#fetatured-upload').attr('src', e.target.result);
+            }  
+            avatarReader.readAsDataURL(noteFile,);
+            $('.if-featured').show();
+            setTimeout(function(){
+                var source_img = document.getElementById("fetatured-upload");
+                var target_img = document.getElementById("fetatured-upload");
+                var quality =  70;
+                target_img.src = jic.compressCover(source_img,quality,nWidthAvatar,nHeightAvatar).src;
+                $('#fetatured-upload').attr('src', target_img.src);
+                //$('#avatar-to-crop').css('display','none');
+                //$('#avatarimagebase64').val(target_img.src);
+            },2000);
+
+        };
+        noteImg.src = _avatarURL.createObjectURL(noteFile,);
+    }
 });
 $('.olymp-close-icon').click(function(){
     $('.if-featured').hide();
